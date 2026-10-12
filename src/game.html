@@ -120,10 +120,10 @@ const tg=()=>[Math.floor(P.x/T)+[0,0,-1,1][P.d],Math.floor((P.y-3)/T)+[1,-1,0,0]
 // ===== ações =====
 function act(){if(!started)return;if(dlg){nextD();return}if(ui)return;if(P.action)return;if(storyAction())return;if(fs){fish();queueSave();return}
 if(inside){interiorAct();return}if(placement){placeAtTarget();return}
-let[tx,ty]=tg(),k=ty*MW+tx,fx=P.x+[0,0,-12,12][P.d],fy=P.y+[12,-12,0,0][P.d],n=N.find(o=>o.region===world.region&&Math.hypot(o.x-fx,o.y-fy)<22);const animal=farm.animals.find(a=>Math.hypot(a.x-fx,a.y-fy)<19);if(animal){openAnimal(animal.id);return}const fence=farm.fences[k];if(fence?.kind==='gate'){fence.open=!fence.open;sol[k]=fence.open?0:1;navRevision++;queueSave();toast(fence.open?'Portão aberto':'Portão fechado');return}if(n){talk(n);return}
-for(const b of B)if(tx==b.dx&&ty==b.dy){b.k=='house'?enterHome():openShop();return}
-if(Math.hypot(dog.x-fx,dog.y-fy)<13&&!cr[k]&&!soil[k]){dog.love=2;dog.idle=0;toast('Bento gostou do carinho! ❤');snd(660,.12,'sine');return}
-let c=cr[k];if(c&&c.a>=CT[c.t].g){beginHarvestAction(tx,ty,k);return}
+let[tx,ty]=tg(),k=ty*MW+tx,fx=P.x+[0,0,-12,12][P.d],fy=P.y+[12,-12,0,0][P.d],n=N.find(o=>o.region===world.region&&Math.hypot(o.x-fx,o.y-fy)<22);const animal=(world.region==='farm'?farm.animals:[]).find(a=>Math.hypot(a.x-fx,a.y-fy)<19);if(animal){openAnimal(animal.id);return}const fence=world.region==='farm'?farm.fences[k]:null;if(fence?.kind==='gate'){fence.open=!fence.open;sol[k]=fence.open?0:1;navRevision++;queueSave();toast(fence.open?'Portão aberto':'Portão fechado');return}if(n){talk(n);return}
+if(world.region==='farm')for(const b of B)if(tx==b.dx&&ty==b.dy){b.k=='house'?enterHome():openShop();return}
+if(world.region==='farm'&&Math.hypot(dog.x-fx,dog.y-fy)<13&&!cr[k]&&!soil[k]){dog.love=2;dog.idle=0;toast('Bento gostou do carinho! ❤');snd(660,.12,'sine');return}
+let c=world.region==='farm'?cr[k]:null;if(c&&c.a>=CT[c.t].g){beginHarvestAction(tx,ty,k);return}
 if(sel===3){openInventory();return}if(sel===4){openNotebook();return}
 beginToolAction(tx,ty,k)}
 function tool(tx,ty,k){if(tx<0||ty<0||tx>=MW||ty>=MH)return;let X=tx*T+8,Y=ty*T+8,t=sel;

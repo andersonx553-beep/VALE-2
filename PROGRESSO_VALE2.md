@@ -47,3 +47,10 @@ Adicionar migração versionada com IDs de moradores e backup, exportação/impo
 - Diário organiza objetivos, pessoas, história relida e coleções. Fontes renováveis de materiais e compra de vegetais/comidas mantêm a progressão disponível.
 - Teste `node tests/m2.cjs` passou em desktop e toque: encadeamento Q06–Q13, região/companhia após reload, ponte, viveiro, objetos narrativos, diálogo correto e preservação do solo da fazenda.
 - Próximo: M3 — três marcos no Alto, habitat, reunião, escolhas e quadro de tarefas (Q14–Q18).
+
+## M3 concluído
+
+- Q14–Q18: Rainara acompanha o Alto, três marcos e três observações do habitat ficam registrados, Tião/Augusto se reúnem na ponte e retornam às rotinas, Q17 oferece três escolhas e Q18 confirma as frentes do plano.
+- Pontos narrativos e tarefas públicas não afetam solo/inventário da fazenda por coincidência de coordenadas. Pets/portas/animais e cercas de outra região não podem ser acionados invisivelmente.
+- Testes `node tests/m3.cjs`: measure/group/listen em viewport 800×360 com toque; todas as escolhas preservam parceria, abrem Q18 e persistem após reload. Companheira atravessa portais, habitat não é removido, NPCs deixam a cena e volta ao controle é segura.
+- Próximo: M4 — doações parciais, teste gradual da comporta, projeto escolhido, restauro, festival, epílogo/créditos e pós-jogo.
