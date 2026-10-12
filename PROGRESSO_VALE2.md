@@ -54,3 +54,13 @@ Adicionar migração versionada com IDs de moradores e backup, exportação/impo
 - Pontos narrativos e tarefas públicas não afetam solo/inventário da fazenda por coincidência de coordenadas. Pets/portas/animais e cercas de outra região não podem ser acionados invisivelmente.
 - Testes `node tests/m3.cjs`: measure/group/listen em viewport 800×360 com toque; todas as escolhas preservam parceria, abrem Q18 e persistem após reload. Companheira atravessa portais, habitat não é removido, NPCs deixam a cena e volta ao controle é segura.
 - Próximo: M4 — doações parciais, teste gradual da comporta, projeto escolhido, restauro, festival, epílogo/créditos e pós-jogo.
+
+## M4 concluído
+
+- Q19–Q24 jogáveis: materiais e comidas doados parcialmente, três mudas, abertura em 1/3, observação/fechamento/filtro, projeto único, fluxo gradual definitivo e visita à confluência.
+- Q21 exige escolha real mesmo ao pular falas. Só um projeto é gratuito; P01 cobra pelo outro. Pomar tem colheita diária e sombra é um projeto permanente para os cuidados.
+- Festival acionado pelo jogador, com alimento consumido; epílogo com parceria/amizade, créditos puláveis, um único avanço de dia e Rainara permanente. Falas podem ser relidas sem pagar de novo.
+- Pós-jogo P01–P04 possui construção, exposição condicionada ao consentimento, contribuições de três categorias/feira semanal e passeio condicionado ao evento R05 (eventos completos entram no M7).
+- `node tests/m4.cjs`: orchard e shade aprovados em toque 360×800, incluindo doação parcial/reload, checkpoint seguro, escolha obrigatória, único projeto grátis, final, créditos e pós-jogo sem duplicação.
+- Visual/áudio final do canal, cenas e retratos decorativos serão completados no acabamento M6/M7; não são substituídos por afirmações de prontidão total.
+- Próximo: M5 — dez espécies, água/limpeza/conforto, qualidade e IDs de produção, filhotes, montaria, transporte, pets, processamento e receitas.
