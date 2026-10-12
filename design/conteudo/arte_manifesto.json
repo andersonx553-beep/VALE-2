@@ -1,0 +1,56 @@
+{
+  "schema_version": 1,
+  "assets": [
+    {
+      "id": "01",
+      "path": "arte/01_dupla.png",
+      "title": "Protagonista e Rainara",
+      "description": "Referência principal aprovada pelo usuário",
+      "width": 1145,
+      "height": 1374,
+      "status": "concept_reference_not_animation_atlas",
+      "transparent": false
+    },
+    {
+      "id": "02",
+      "path": "arte/02_moradores.png",
+      "title": "Moradores do Vale",
+      "description": "Marta, Tião, Luna, Celina, Augusto e Iara",
+      "width": 1145,
+      "height": 1374,
+      "status": "concept_reference_not_animation_atlas",
+      "transparent": false
+    },
+    {
+      "id": "03",
+      "path": "arte/03_animais.png",
+      "title": "Bichos do Vale",
+      "description": "Dez espécies de criação, Bento e Amora",
+      "width": 1145,
+      "height": 1374,
+      "status": "concept_reference_not_animation_atlas",
+      "transparent": false
+    },
+    {
+      "id": "04",
+      "path": "arte/04_mundo.png",
+      "title": "Mundo e objetos",
+      "description": "Arquitetura, viveiro, criação, nascentes e objetos",
+      "width": 1145,
+      "height": 1374,
+      "status": "concept_reference_not_animation_atlas",
+      "transparent": false
+    },
+    {
+      "id": "05",
+      "path": "arte/05_rainara.png",
+      "title": "Rainara e expressões",
+      "description": "Guia de vistas e seis expressões",
+      "width": 1145,
+      "height": 1374,
+      "status": "concept_reference_not_animation_atlas",
+      "transparent": false
+    }
+  ],
+  "note": "Pranchas conceituais geradas; preparar e validar sprites raster antes de usar no runtime."
+}

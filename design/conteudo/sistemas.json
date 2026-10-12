@@ -1,0 +1,244 @@
+{
+  "schema_version": 1,
+  "kind": "design_values_subject_to_playtest",
+  "species": [
+    {
+      "id": "chicken",
+      "name": "Galinha",
+      "first_individual_name": "Pipoca",
+      "shelter": "coop",
+      "maturity_days": 3,
+      "productive_care_days": 1,
+      "product": "ovo",
+      "amount": 1,
+      "adult_purchase_price": 50,
+      "product_sale_base": 30,
+      "unlock": "Q04",
+      "example_temperament": "calm",
+      "food_rule": "ração ou mistura de grãos"
+    },
+    {
+      "id": "cow",
+      "name": "Vaca",
+      "first_individual_name": "Mimosa",
+      "shelter": "stable",
+      "maturity_days": 7,
+      "productive_care_days": 1,
+      "product": "leite",
+      "amount": 1,
+      "adult_purchase_price": 150,
+      "product_sale_base": 40,
+      "unlock": "Q08",
+      "example_temperament": "reserved",
+      "food_rule": "pasto acessível ou ração"
+    },
+    {
+      "id": "goat",
+      "name": "Cabra",
+      "first_individual_name": "Jujuba",
+      "shelter": "stable",
+      "maturity_days": 5,
+      "productive_care_days": 1,
+      "product": "leite_cabra",
+      "amount": 1,
+      "adult_purchase_price": 180,
+      "product_sale_base": 42,
+      "unlock": "Q12",
+      "example_temperament": "curious",
+      "food_rule": "pasto acessível ou ração"
+    },
+    {
+      "id": "sheep",
+      "name": "Ovelha",
+      "first_individual_name": "Brisa",
+      "shelter": "stable",
+      "maturity_days": 5,
+      "productive_care_days": 3,
+      "product": "la",
+      "amount": 1,
+      "adult_purchase_price": 220,
+      "product_sale_base": 65,
+      "unlock": "Q12",
+      "example_temperament": "calm",
+      "food_rule": "pasto acessível ou ração"
+    },
+    {
+      "id": "duck",
+      "name": "Pato",
+      "first_individual_name": "Pingo",
+      "shelter": "coop_pond",
+      "maturity_days": 4,
+      "productive_care_days": 2,
+      "product": "ovo_pato",
+      "amount": 1,
+      "adult_purchase_price": 100,
+      "product_sale_base": 45,
+      "unlock": "Q10",
+      "example_temperament": "curious",
+      "food_rule": "ração e acesso seguro ao lago"
+    },
+    {
+      "id": "pig",
+      "name": "Porco",
+      "first_individual_name": "Torresmo",
+      "shelter": "pigpen",
+      "maturity_days": 6,
+      "productive_care_days": 2,
+      "product": "composto",
+      "amount": 1,
+      "adult_purchase_price": 260,
+      "product_sale_base": 18,
+      "unlock": "Q18",
+      "example_temperament": "curious",
+      "food_rule": "ração; restos vegetais preparados como alternativa"
+    },
+    {
+      "id": "horse",
+      "name": "Cavalo",
+      "first_individual_name": "Castanha",
+      "shelter": "stall",
+      "maturity_days": 8,
+      "productive_care_days": 0,
+      "product": null,
+      "amount": 0,
+      "adult_purchase_price": 500,
+      "product_sale_base": 0,
+      "unlock": "Q14",
+      "example_temperament": "reserved",
+      "food_rule": "pasto acessível ou ração"
+    },
+    {
+      "id": "donkey",
+      "name": "Burro",
+      "first_individual_name": "Zé",
+      "shelter": "stall",
+      "maturity_days": 8,
+      "productive_care_days": 0,
+      "product": null,
+      "amount": 0,
+      "adult_purchase_price": 380,
+      "product_sale_base": 0,
+      "unlock": "Q18",
+      "example_temperament": "calm",
+      "food_rule": "pasto acessível ou ração"
+    },
+    {
+      "id": "rabbit",
+      "name": "Coelho",
+      "first_individual_name": "Flocos",
+      "shelter": "rabbit_hutch",
+      "maturity_days": 3,
+      "productive_care_days": 3,
+      "product": "pelo_escovado",
+      "amount": 1,
+      "adult_purchase_price": 90,
+      "product_sale_base": 35,
+      "unlock": "C01",
+      "example_temperament": "reserved",
+      "food_rule": "feno/ração; não depender só de cenoura"
+    },
+    {
+      "id": "bee",
+      "name": "Abelhas",
+      "first_individual_name": "Colmeia",
+      "shelter": "apiary",
+      "maturity_days": 3,
+      "productive_care_days": 3,
+      "product": "mel",
+      "amount": 1,
+      "adult_purchase_price": 120,
+      "product_sale_base": 70,
+      "unlock": "Q10",
+      "example_temperament": "colony",
+      "food_rule": "flores próximas; repouso no inverno"
+    }
+  ],
+  "legacy_prices": "Preservar preços já existentes do HTML para galinha/vaca/ovo/leite se forem diferentes; valores acima para legado são referência, não sobrescrita obrigatória.",
+  "quality": {
+    "normal": {
+      "multiplier": 1
+    },
+    "good": {
+      "comfort_min": 80,
+      "bond_min": 30,
+      "multiplier": 1.25
+    },
+    "excellent": {
+      "comfort_min": 95,
+      "bond_min": 70,
+      "multiplier": 1.5
+    }
+  },
+  "daily_comfort_points": {
+    "fed": 40,
+    "water": 30,
+    "clean_shelter": 20,
+    "interaction": 10
+  },
+  "production_requires": [
+    "adult",
+    "fed",
+    "water",
+    "valid_shelter"
+  ],
+  "product_capacity_cycles": 3,
+  "care_progression": "Acumular apenas dias bem cuidados; não zerar ciclo parcial ao falhar um dia.",
+  "limits": {
+    "farm_animals_active": 24,
+    "pets": 2,
+    "particle_count": 120,
+    "audio_voices": 8
+  },
+  "companion": {
+    "id": "rainara",
+    "trust_cap": 100,
+    "talk_daily": 2,
+    "shared_task_daily": 3,
+    "personal_event": 8,
+    "liked_gift_daily": 2,
+    "daily_tasks_initial": 1,
+    "daily_tasks_after_R03": 2,
+    "romance_opt_in": true,
+    "absent_day_penalty": 0
+  },
+  "calendar": {
+    "days_per_season": 14,
+    "season_names": [
+      "Primavera",
+      "Verão",
+      "Outono",
+      "Inverno"
+    ],
+    "festivals": [
+      {
+        "id": "F01",
+        "season": 0,
+        "day": 10
+      },
+      {
+        "id": "F02",
+        "season": 1,
+        "day": 10
+      },
+      {
+        "id": "F03",
+        "season": 2,
+        "day": 10
+      },
+      {
+        "id": "F04",
+        "season": 3,
+        "day": 10
+      }
+    ]
+  },
+  "content_id_aliases": {
+    "wood": "madeira",
+    "stone": "pedra",
+    "feed": "racao",
+    "egg": "ovo",
+    "milk": "leite",
+    "spring": "Primavera"
+  },
+  "renaming": "Armazenar IDs canônicos estáveis; traduzir apenas rótulos."
+}
