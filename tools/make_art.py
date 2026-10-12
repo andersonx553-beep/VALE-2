@@ -81,12 +81,12 @@ def human(who,direction,state,frame):
   box(hx-10,16,3,4,c['skin']);box(hx+8,16,3,4,c['skin'])
   eyeXs=[hx-6,hx+3] if not side else [hx-6 if sign<0 else hx+3]
   for ex in eyeXs:
-   if state=='idle' and frame==1 or state=='talk' and frame==1:
+   if state=='idle' and frame==1:
     box(ex,18,5,1,O);box(ex,17,1,1,O)
    else:
     box(ex+1,16,3,6,O);box(ex,17,5,4,O);box(ex+1,17,3,4,'#593922');box(ex+1,17,1,3,WHITE);box(ex+3,17,1,1,WHITE);box(ex+2,20,2,1,'#95663b')
    box(ex,14,5,1,c['hair'])
-  box(hx-1,22,2,1,'#b2794d');box(hx-1,24,3,1,'#995d47')
+  box(hx-1,22,2,1,'#b2794d');box(hx-1,24,3,2 if state=='talk' and frame==1 else 1,'#995d47')
   if c['head']=='beard':poly([(hx-6,22),(hx+6,22),(hx+5,26),(hx,28),(hx-5,26)],c['hair']);box(hx-4,22,8,2,c['hairlight']);box(hx-1,24,2,1,O)
   if who=='tiao':box(hx-5,22,11,2,'#d3c6b0');box(hx-3,24,7,1,c['hair']);box(hx-1,23,3,1,O)
   if who=='marta':

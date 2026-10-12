@@ -64,3 +64,11 @@ Adicionar migração versionada com IDs de moradores e backup, exportação/impo
 - `node tests/m4.cjs`: orchard e shade aprovados em toque 360×800, incluindo doação parcial/reload, checkpoint seguro, escolha obrigatória, único projeto grátis, final, créditos e pós-jogo sem duplicação.
 - Visual/áudio final do canal, cenas e retratos decorativos serão completados no acabamento M6/M7; não são substituídos por afirmações de prontidão total.
 - Próximo: M5 — dez espécies, água/limpeza/conforto, qualidade e IDs de produção, filhotes, montaria, transporte, pets, processamento e receitas.
+
+### M5 — criação ampliada
+Implementadas dez espécies com indivíduos persistentes, cuidados em grupo, estoques com IDs únicos, conforto/qualidade, ferramentas, filhotes e vagas reservadas. Cavalo usa colisão exterior e desmontagem segura; burro move até 12 itens entre baia/cesto, com entrega única após reload. Queijeira, tear, composto, flores e novas receitas funcionam com consumo real. Save legado mantém estoques acima do limite novo sem apagá-los.
+Verificação: `node tests/m5.cjs` passou: dez funções/ciclos, qualidade, reload, filhote, montaria, transporte e processamento. Regressões M0–M4 passaram, incluindo nomes literais e backup. A adoção de Amora se conclui no evento B06, implementado no M7.
+
+### M6 — cobertura visual
+Atlas próprios para oito humanos, retratos/expressões, dez espécies/filhotes, Bento/Amora, prédios, móveis, plantas e objetos. Autoria de pixels em scripts reproduzíveis, sem recortes das pranchas conceituais. Cabelo, roupas e acessórios por direção; ações com contato, boca nas falas e caminhada ligada ao deslocamento real. Ambientes da praça/bosque/alto, canal seco/turvo/restaurado e habitat preservado. Sprites raster embutidos no HTML; nenhuma solicitação externa em execução.
+Verificação: `node tests/m6.cjs` passou com 4.289 frames válidos, 42,52 MiB estimados de atlas/caches/canvases; capturas das quatro regiões e interior revisadas em Chromium desktop. HTML 1,24 MB, abaixo do orçamento. Regressões M0–M5 passaram após integração visual. Acabamento de áudio, interface, eventos e festivais segue no M7.
