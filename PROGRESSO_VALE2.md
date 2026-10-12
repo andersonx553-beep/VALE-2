@@ -27,3 +27,14 @@ Adicionar migração versionada com IDs de moradores e backup, exportação/impo
 - Teste real: `node tests/m0.cjs` no Chromium headless, aprovado para legado com galinha/vaca, recursos removidos/cultivos, estoque, missões, amizade, backup, exportação, importação inválida, nome com HTML e falhas de leitura/gravação.
 - Fonte: src/game.html. Distribuição: index.html, gerada por `python3 tools/build.py`.
 - Próximo passo: preparar atlases da dupla e implementar Q01–Q05, companhia e ritual da varanda.
+
+## M1 concluído
+
+- Atlases raster autorais: células humanas 32×48 com gutters, quatro direções, estados de movimento/ações; retratos 96×96 com seis expressões. Pixel art feita por autoria de pixels em tools/make_art.py, sem recortar as pranchas. PNGs e coordenadas explícitas ficam em assets; o build incorpora apenas assets finais.
+- Dupla e moradores originais usam sprites novos. Rainara: cabelo ondulado longo, coral/terracota, bolsa oliva e folha assimétrica. Protagonista: cabelo preto, jaqueta creme, calça grafite. Olhos e silhuetas adaptados à resolução do mapa.
+- Q01–Q05 jogáveis: nome/motivo, mala, três plantios regados, entrega sazonal com equivalência de legado, galinheiro/bebedouro/Pipoca e três ações na marca do canal. Falas canônicas, escolhas reais, retomada e releitura sem recompensas duplicadas.
+- Rainara acompanha/espera/segue rotina, entra/sai da casa e contorna ocupação temporária do jogador. Tarefas de rega/alimentação/coleta/colheita têm reserva, insumos reais, cancelamento, pausa e cesto. Varanda funciona com conversa gratuita ou consumo real de refeição.
+- Ferramentas aplicam efeitos no frame de contato. Colheita também é animada e respeita reservas.
+- Testes: `node tests/m1.cjs` aprovado em desktop 1280×720 e toque 360×800. Verificados Q01–Q05, cena interrompida, pagamento único, replay, tarefa sem água, retomada após reload, colheita e cesto sem duplicação.
+- Arte já funcional, ainda a aprimorar no M6: pets/animais/ambientes e cobertura visual das cenas. O pacote inteiro não está concluído.
+- Próximo passo: M2 — Praça e estabelecimentos, Celina/Augusto/Iara, Q06–Q13, viveiro e diário ampliado.

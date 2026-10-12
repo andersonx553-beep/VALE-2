@@ -1,0 +1,10 @@
+// ===== ASSETS: atlas raster autoral, carregado uma vez e embutido no HTML =====
+const ATLAS_SOURCES=/*__ASSET_DATA__*/;
+const ART=/*__ASSET_MAP__*/;
+const atlasImages={};let artReady=false;
+const assetsReady=Promise.all(Object.entries(ATLAS_SOURCES).map(([id,url])=>new Promise((resolve,reject)=>{const img=new Image();atlasImages[id]=img;img.onload=()=>resolve();img.onerror=()=>reject(Error('Não foi possível carregar o atlas '+id));img.src=url}))).then(()=>{artReady=true;$('go').disabled=false;$('go').textContent='▶ Entrar no Vale'}).catch(e=>{$('go').disabled=true;$('go').textContent=e.message});
+$('go').disabled=true;$('go').textContent='Preparando o Vale…';
+function drawSprite(key,x,y){const f=ART.frames[key],im=f&&atlasImages[f.atlas];if(!f||!im?.complete)return;ctx.drawImage(im,f.x,f.y,f.w,f.h,Math.round(x-f.anchor[0]),Math.round(y-f.anchor[1]),f.w,f.h)}
+function drawActor(id,a,state){if(!artReady)return;const d=['down','up','left','right'][a.d??a.dir??0];state=state||a.action?.type||(a===P&&P.action?P.action.type:a.state==='sit'?'sit':a.m||a.mv?a===P&&K.sh?'run':'walk':'idle');const list=ART.actors[id]?.[state]?.[d]||ART.actors[id]?.idle?.[d];if(!list)return;const fps=state==='idle'?2:state==='run'?12:state==='walk'?8:10,frame=a===P&&P.action?Math.min(list.length-1,Math.floor(P.action.elapsed*10)):Math.floor(time*fps)%list.length;R(a.x-6,a.y-1,12,3,'#251b1733');drawSprite(list[frame],a.x,a.y+1)}
+function portraitURL(id,expression='calm'){const key=ART.portraits[id]?.[expression]||ART.portraits[id]?.calm,f=ART.frames[key];if(!f)return '';const canvas=document.createElement('canvas');canvas.width=f.w;canvas.height=f.h;canvas.getContext('2d').drawImage(atlasImages[f.atlas],f.x,f.y,f.w,f.h,0,0,f.w,f.h);return canvas.toDataURL()}
+const portraitCache={};function portraitHTML(id,expression='calm'){const key=id+'.'+expression;if(!portraitCache[key])portraitCache[key]=portraitURL(id,expression);return portraitCache[key]?'<img class="portrait" alt="'+esc(id)+' · '+expression+'" src="'+portraitCache[key]+'">':''}
