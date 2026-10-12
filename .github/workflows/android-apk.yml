@@ -85,7 +85,7 @@ jobs:
           set -euo pipefail
           godot --headless --verbose --path . --export-debug Android build/VALE-2-preview.apk 2>&1 | tee "$RUNNER_TEMP/export.log"
           test -s build/VALE-2-preview.apk
-          if grep -E 'SCRIPT ERROR|Parse Error|ERROR:.*(export|Export)' "$RUNNER_TEMP/export.log"; then
+          if grep -E 'SCRIPT ERROR|Parse Error|ERROR:' "$RUNNER_TEMP/export.log"; then
             exit 1
           fi
           aapt="${ANDROID_HOME:-$ANDROID_SDK_ROOT}/build-tools/34.0.0/aapt"
