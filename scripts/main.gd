@@ -247,7 +247,7 @@ func _apply_action(id: int, tool: int) -> void:
 	var nearest := -1
 	var distance := ACTION_RANGE
 	for i in plots.size():
-		var d := positions[id].distance_to(_plot_center(i))
+		var d: float = (positions[id] as Vector2).distance_to(_plot_center(i))
 		if d < distance:
 			distance = d
 			nearest = i
