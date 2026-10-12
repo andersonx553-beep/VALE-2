@@ -38,3 +38,12 @@ Adicionar migração versionada com IDs de moradores e backup, exportação/impo
 - Testes: `node tests/m1.cjs` aprovado em desktop 1280×720 e toque 360×800. Verificados Q01–Q05, cena interrompida, pagamento único, replay, tarefa sem água, retomada após reload, colheita e cesto sem duplicação.
 - Arte já funcional, ainda a aprimorar no M6: pets/animais/ambientes e cobertura visual das cenas. O pacote inteiro não está concluído.
 - Próximo passo: M2 — Praça e estabelecimentos, Celina/Augusto/Iara, Q06–Q13, viveiro e diário ampliado.
+
+## M2 concluído
+
+- Praça, Bosque e acesso ao Alto têm regiões próprias com grids, portais, caches de terreno e spawns seguros; fazenda antiga permanece intacta. Mudanças de estação/ponte invalidam só caches relevantes.
+- Celina, Augusto e Iara têm sprites, retratos, rotina, interações e IDs persistentes. Moradores originais seguem acessíveis e mantêm amizade e tarefas locais. Armazém da fazenda funciona como retirada.
+- Q06–Q13 implementadas com condições tipadas: marcas do lago, conversa com Tião, materiais/ponte realmente transitável, água/escova da vaca comunitária, relatos autorizados, três mudas, peça na bolsa de história, bancada construída/rega compartilhada e carta de Helena.
+- Diário organiza objetivos, pessoas, história relida e coleções. Fontes renováveis de materiais e compra de vegetais/comidas mantêm a progressão disponível.
+- Teste `node tests/m2.cjs` passou em desktop e toque: encadeamento Q06–Q13, região/companhia após reload, ponte, viveiro, objetos narrativos, diálogo correto e preservação do solo da fazenda.
+- Próximo: M3 — três marcos no Alto, habitat, reunião, escolhas e quadro de tarefas (Q14–Q18).

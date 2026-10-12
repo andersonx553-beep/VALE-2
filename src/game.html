@@ -120,7 +120,7 @@ const tg=()=>[Math.floor(P.x/T)+[0,0,-1,1][P.d],Math.floor((P.y-3)/T)+[1,-1,0,0]
 // ===== ações =====
 function act(){if(!started)return;if(dlg){nextD();return}if(ui)return;if(P.action)return;if(storyAction())return;if(fs){fish();queueSave();return}
 if(inside){interiorAct();return}if(placement){placeAtTarget();return}
-let[tx,ty]=tg(),k=ty*MW+tx,fx=P.x+[0,0,-12,12][P.d],fy=P.y+[12,-12,0,0][P.d],n=N.find(o=>Math.hypot(o.x-fx,o.y-fy)<22);const animal=farm.animals.find(a=>Math.hypot(a.x-fx,a.y-fy)<19);if(animal){openAnimal(animal.id);return}const fence=farm.fences[k];if(fence?.kind==='gate'){fence.open=!fence.open;sol[k]=fence.open?0:1;navRevision++;queueSave();toast(fence.open?'Portão aberto':'Portão fechado');return}if(n){talk(n);return}
+let[tx,ty]=tg(),k=ty*MW+tx,fx=P.x+[0,0,-12,12][P.d],fy=P.y+[12,-12,0,0][P.d],n=N.find(o=>o.region===world.region&&Math.hypot(o.x-fx,o.y-fy)<22);const animal=farm.animals.find(a=>Math.hypot(a.x-fx,a.y-fy)<19);if(animal){openAnimal(animal.id);return}const fence=farm.fences[k];if(fence?.kind==='gate'){fence.open=!fence.open;sol[k]=fence.open?0:1;navRevision++;queueSave();toast(fence.open?'Portão aberto':'Portão fechado');return}if(n){talk(n);return}
 for(const b of B)if(tx==b.dx&&ty==b.dy){b.k=='house'?enterHome():openShop();return}
 if(Math.hypot(dog.x-fx,dog.y-fy)<13&&!cr[k]&&!soil[k]){dog.love=2;dog.idle=0;toast('Bento gostou do carinho! ❤');snd(660,.12,'sine');return}
 let c=cr[k];if(c&&c.a>=CT[c.t].g){beginHarvestAction(tx,ty,k);return}
@@ -259,7 +259,7 @@ function selectSlot(i){if(ui||dlg)return;sel=i;hud();if(i===2)openSeeds();else i
 $('menuBtn').onclick=()=>{if(started&&!dlg)openNotebook()};$('runBtn').onclick=()=>{if(!ui&&!dlg){K.sh=!K.sh;$('runBtn').textContent=K.sh?'Andar':'Correr'}};
 // ===== atualização =====
 
-function upd(dt){if(ui||dlg||document.hidden){P.mv=0;return}time+=dt;updateAction(dt);updateCompanion(dt);if(!inside)updateAnimals(dt);saveElapsed+=dt;if(saveElapsed>=5){saveElapsed=0;queueSave()}ripples.forEach(r=>r.l-=dt);ripples=ripples.filter(r=>r.l>0);fade=Math.max(0,fade-dt*1.5);if(!dlg&&!ui){let ax=(K.r?1:0)-(K.l?1:0),ay=(K.d?1:0)-(K.u?1:0);P.mv=0;if((ax||ay)&&!fs&&!P.action){let l=Math.hypot(ax,ay),sp=(K.sh?95*(buffs.speed>worldClock()?1.25:1):62)*dt;ax=ax/l*sp;ay=ay/l*sp;P.d=Math.abs(ax)>Math.abs(ay)?(ax>0?3:2):(ay>0?0:1);if(!bl(P.x+ax,P.y))P.x+=ax;if(!bl(P.x,P.y+ay))P.y+=ay;P.mv=1}tm+=dt*7*settings.clock;if(tm>=1500){toast('😴 Você desmaiou de cansaço...');newDay()}}
+function upd(dt){if(ui||dlg||document.hidden){P.mv=0;return}time+=dt;updateAction(dt);updateCompanion(dt);if(!inside&&world.region==='farm')updateAnimals(dt);saveElapsed+=dt;if(saveElapsed>=5){saveElapsed=0;queueSave()}ripples.forEach(r=>r.l-=dt);ripples=ripples.filter(r=>r.l>0);fade=Math.max(0,fade-dt*1.5);if(!dlg&&!ui){let ax=(K.r?1:0)-(K.l?1:0),ay=(K.d?1:0)-(K.u?1:0);P.mv=0;if((ax||ay)&&!fs&&!P.action){let l=Math.hypot(ax,ay),sp=(K.sh?95*(buffs.speed>worldClock()?1.25:1):62)*dt;ax=ax/l*sp;ay=ay/l*sp;P.d=Math.abs(ax)>Math.abs(ay)?(ax>0?3:2):(ay>0?0:1);if(!bl(P.x+ax,P.y))P.x+=ax;if(!bl(P.x,P.y+ay))P.y+=ay;P.mv=1}tm+=dt*7*settings.clock;if(tm>=1500){toast('😴 Você desmaiou de cansaço...');newDay()}}
 P.sw-=dt;trees.forEach(o=>o.sh-=dt);rocks.forEach(o=>o.sh-=dt);
 if(fs){fs.t+=dt;if(fs.ph==0&&fs.t>fs.b){fs.ph=1;fs.t=0;snd(900,.12)}else if(fs.ph==1&&fs.t>Math.max(settings.fishWindow,buffs.fish>worldClock()?1.3:.9)){fs=null;toast('O peixe escapou...')}}
 if(!inside)updateNPCs(dt);
@@ -298,7 +298,7 @@ const vis=(x,y)=>x>=x0-3&&x<=x1+3&&y>=y0-3&&y<=y1+5;
 trees.forEach(t=>vis(t.x,t.y)&&L.push([(t.y+1)*T,()=>tree(t)]));rocks.forEach(t=>vis(t.x,t.y)&&L.push([(t.y+1)*T,()=>rock(t)]));
 L.push([(B[0].y+B[0].h)*T,()=>house(B[0])],[(B[1].y+B[1].h)*T,()=>shop(B[1])]);LP.forEach(([x,y])=>L.push([(y+1)*T,()=>lamp(x*T+8,(y+1)*T)]));
 farm.buildings.forEach(b=>L.push([(b.y+2)*T,()=>drawBuilding(b)]));Object.entries(farm.fences).forEach(([k,f])=>L.push([((k/MW|0)+1)*T,()=>drawFence(+k,f)]));farm.animals.forEach(a=>L.push([a.y,()=>drawAnimal(a)]));drawPlacement();
-N.forEach(n=>L.push([n.y,()=>npcD(n)]));L.push([dog.y,dogD]);
+N.filter(n=>n.region==='farm').forEach(n=>L.push([n.y,()=>npcD(n)]));L.push([dog.y,dogD]);
 addStoryDrawing(L);L.push([P.y,()=>{drawActor('player',P);drawTool()}]);
 ripples.forEach(r=>{ctx.strokeStyle='rgba(185,235,255,'+r.l+')';ctx.lineWidth=1;ctx.beginPath();ctx.ellipse(r.x,r.y,2+(1-r.l)*12,1+(1-r.l)*5,0,0,Math.PI*2);ctx.stroke()});
 L.sort((a,b)=>a[0]-b[0]).forEach(o=>o[1]());
