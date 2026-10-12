@@ -74,7 +74,7 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          godot --headless --path . --export-debug Android build/VALE-2-preview.apk 2>&1 | tee "$RUNNER_TEMP/export.log"
+          godot --headless --verbose --path . --export-debug Android build/VALE-2-preview.apk 2>&1 | tee "$RUNNER_TEMP/export.log"
           test -s build/VALE-2-preview.apk
           if grep -E 'SCRIPT ERROR|Parse Error|ERROR:.*(export|Export)' "$RUNNER_TEMP/export.log"; then
             exit 1
