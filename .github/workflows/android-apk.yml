@@ -70,6 +70,15 @@ jobs:
             exit 1
           fi
 
+      - name: Start main scene and reject runtime errors
+        shell: bash
+        run: |
+          set -euo pipefail
+          godot --headless --path . --quit-after 3 2>&1 | tee "$RUNNER_TEMP/scene.log"
+          if grep -E 'SCRIPT ERROR|ERROR:|Parse Error|Failed to load' "$RUNNER_TEMP/scene.log"; then
+            exit 1
+          fi
+
       - name: Export signed debug APK
         shell: bash
         run: |
