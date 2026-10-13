@@ -72,3 +72,18 @@ Verificação: `node tests/m5.cjs` passou: dez funções/ciclos, qualidade, relo
 ### M6 — cobertura visual
 Atlas próprios para oito humanos, retratos/expressões, dez espécies/filhotes, Bento/Amora, prédios, móveis, plantas e objetos. Autoria de pixels em scripts reproduzíveis, sem recortes das pranchas conceituais. Cabelo, roupas e acessórios por direção; ações com contato, boca nas falas e caminhada ligada ao deslocamento real. Ambientes da praça/bosque/alto, canal seco/turvo/restaurado e habitat preservado. Sprites raster embutidos no HTML; nenhuma solicitação externa em execução.
 Verificação: `node tests/m6.cjs` passou com 4.289 frames válidos, 42,52 MiB estimados de atlas/caches/canvases; capturas das quatro regiões e interior revisadas em Chromium desktop. HTML 1,24 MB, abaixo do orçamento. Regressões M0–M5 passaram após integração visual. Acabamento de áudio, interface, eventos e festivais segue no M7.
+
+## M7 concluído — narrativa pessoal, festivais e acabamento
+
+- Os 17 eventos R01–R05, M01, T01, L01, C01, A01, I01 e B01–B06 são disparados por condições verificáveis e consumos/ações reais; progresso e recompensas são salvos uma única vez. Amizade e romance permanecem escolhas distintas, com consentimento explícito; o diário relê eventos sem repetir recompensas. B06 conclui a adoção de Amora.
+- F01–F04 agora são festivais anuais funcionais, com troca de sementes, trajeto de lanternas, concurso culinário e janela de cartas. A progressão da ponte, gastos, horários e reload são respeitados.
+- Opções persistentes de relógio, janela de pesca, escala de texto, ritmo de diálogo, alto contraste, volume e mudo; pausa quando a aba fica oculta, navegação de menu por teclado, caminho acessível, retratos, transições e efeitos/sons procedurais sem downloads externos.
+- Integridade adicional: limite global de 24 animais novos, espaços para bichos grandes, recibos limitados e entregas de carga protegidas contra repetição; pontos públicos, cenas e habitat não permitem alterar a fazenda por coordenadas sobrepostas. Telhas raster autorais cobrem quatro estações, caminhos, solos, água animada e interiores; efeitos de chuva, neve, folhas, passos, colheita, água e corações usam o atlas pixelado.
+- Build atual: `python3 tools/build.py`; `index.html` autocontido com 2.058.687 bytes. Atlas e caches estimados pelo teste visual: 59,07 MiB, 7.686 frames. Os PNGs são fontes locais reproduzíveis via `python3 tools/build_art.py`.
+
+### Verificação final
+
+- `node tests/m0.cjs` a `node tests/m7.cjs`, `node tests/campaign.cjs`, `node tests/economy.cjs` e `node tests/performance.cjs`: aprovados. A campanha completa foi iniciada sem progresso injetado, concluiu as 24 missões, eventos de Rainara/Luna e os quatro arcos pós-jogo. Testes exercitam amizade/romance, pausa, configurações, recarga e os festivais anuais.
+- Chromium headless, sem solicitações remotas: 1280×720 a 59,998 FPS (p95 16,7 ms), 360×800 a 60,318 FPS (p95 16,8 ms, simulação CPU ×4) e 800×360 a 60,183 FPS (p95 16,7 ms, CPU ×4), com 24 animais e pico de 8 vozes. Isso mede o navegador simulado; não substitui teste em aparelho físico.
+- Cenários econômicos de 14 dias construíram o primeiro abrigo nos três perfis: cultivo no dia 4, pesca e criação no dia 1. O cenário maximiza uma atividade de cada vez; os saldos não são comparação de esforço equivalente.
+- Servidor local de teste continuou ativo em `127.0.0.1:8000`.
