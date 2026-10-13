@@ -1,0 +1,1545 @@
+{
+  "schema_version": 1,
+  "kind": "creative_specification_not_runtime_code",
+  "language": "pt-BR",
+  "campaign": [
+    {
+      "id": "Q01",
+      "title": "Duas cadeiras",
+      "act": "Prólogo",
+      "place": "Fazenda",
+      "requires": [],
+      "objective": "Conhecer Rainara, entrar na casa e guardar a mala no ponto marcado.",
+      "dialogue": [
+        {
+          "speaker": "Rainara",
+          "text": "Você chegou. Eu ia buscar você na estrada, mas o Bento resolveu mudar minha luva de lugar."
+        },
+        {
+          "speaker": "Jogador",
+          "text": "Você já estava trabalhando aqui?"
+        },
+        {
+          "speaker": "Rainara",
+          "text": "Só arrumando o que dava. Tem uma cadeira para você na varanda."
+        },
+        {
+          "speaker": "Rainara",
+          "text": "O que trouxe você até aqui?"
+        },
+        {
+          "speaker": "Jogador",
+          "text": "Escolha: quero recomeçar; quero aprender; quero criar raízes."
+        },
+        {
+          "speaker": "Rainara",
+          "text": "Então começamos por hoje. Amanhã a gente descobre junto."
+        }
+      ],
+      "reward": {
+        "flags": [
+          "story_started",
+          "rainara_companion"
+        ],
+        "trust": 3
+      },
+      "acceptance": "Nome do jogador aplicado, motivo salvo; Rainara pode acompanhar e a casa tem entrada e saída.",
+      "fallback": "Save antigo: não reposicionar construções; oferecer apresentação ao sair de casa e preservar itens."
+    },
+    {
+      "id": "Q02",
+      "title": "Raiz antes da pressa",
+      "act": "I",
+      "place": "Fazenda",
+      "requires": [
+        "Q01"
+      ],
+      "objective": "Preparar, plantar e regar 3 tiles com uma cultura da estação. Plantas existentes válidas contam.",
+      "dialogue": [
+        {
+          "speaker": "Rainara",
+          "text": "Não precisa transformar o terreno inteiro hoje. Vamos começar com três espaços."
+        },
+        {
+          "speaker": "Jogador",
+          "text": "E se alguma não crescer?"
+        },
+        {
+          "speaker": "Rainara",
+          "text": "A gente olha a água, a terra, a época. Planta não conhece cobrança; conhece cuidado."
+        },
+        {
+          "speaker": "Rainara",
+          "text": "Guardei no caderno o que fizemos. Assim amanhã ninguém precisa adivinhar."
+        }
+      ],
+      "reward": {
+        "flags": [
+          "garden_started"
+        ],
+        "trust": 3,
+        "items": {
+          "racao": 3
+        }
+      },
+      "acceptance": "Três tiles únicos válidos registrados; gastar água/semente uma vez; diário indica o próximo passo.",
+      "fallback": "Dar apenas sementes sazonais necessárias para completar 3, uma vez; reserva tutorial de água disponível."
+    },
+    {
+      "id": "Q03",
+      "title": "A panela de Marta",
+      "act": "I",
+      "place": "Praça",
+      "requires": [
+        "Q02"
+      ],
+      "objective": "Entregar 3 nabos OU 3 cenouras OU 3 espinafres à Marta. A missão antiga equivalente concluída satisfaz esta etapa.",
+      "dialogue": [
+        {
+          "speaker": "Marta",
+          "text": "Trouxe a colheita? A panela é grande, mas a primeira sopa sempre cabe nela."
+        },
+        {
+          "speaker": "Rainara",
+          "text": "Se sobrar, a gente leva para o Tião."
+        },
+        {
+          "speaker": "Marta",
+          "text": "Ele diz que não precisa. Leve assim mesmo e pergunte como está."
+        },
+        {
+          "speaker": "Marta",
+          "text": "Receita é para circular. Anote esta aqui."
+        }
+      ],
+      "reward": {
+        "flags": [
+          "marta_soup_story"
+        ],
+        "recipes": [
+          "sopa"
+        ],
+        "money": 120
+      },
+      "acceptance": "Consumo do conjunto escolhido e recompensa atômicos; se legado já pagou, não pagar novamente.",
+      "fallback": "Marta vende o vegetal sazonal; caderno informa alternativas antes da entrega."
+    },
+    {
+      "id": "Q04",
+      "title": "Um lugar para Pipoca",
+      "act": "I",
+      "place": "Fazenda",
+      "requires": [
+        "Q03"
+      ],
+      "objective": "Ter galinheiro, água e 1 ração; receber ou apresentar uma galinha existente e concluir primeiro cuidado.",
+      "dialogue": [
+        {
+          "speaker": "Celina",
+          "text": "Antes de trazer a Pipoca, vamos olhar o lugar onde ela vai dormir."
+        },
+        {
+          "speaker": "Rainara",
+          "text": "Tem abrigo, água e um ninho. Falta alguém que respeite o jeito dela."
+        },
+        {
+          "speaker": "Celina",
+          "text": "Aproxime sem pressa. Deixe que ela conheça sua voz."
+        },
+        {
+          "speaker": "Rainara",
+          "text": "Ela já encontrou o canto mais confortável. Eu levaria mais tempo."
+        }
+      ],
+      "reward": {
+        "flags": [
+          "poultry_care_known"
+        ],
+        "animal_if_missing": "chicken",
+        "items": {
+          "racao": 5
+        },
+        "trust": 3
+      },
+      "acceptance": "Animal recebe ID e abrigo livre; não gerar galinha extra se jogador usar uma existente.",
+      "fallback": "Kit único de construção cobre déficit até 12 madeiras e 6 pedras; Celina subsidia até 80 G para o primeiro galinheiro se necessário."
+    },
+    {
+      "id": "Q05",
+      "title": "A tampa entre raízes",
+      "act": "I",
+      "place": "Fazenda",
+      "requires": [
+        "Q04"
+      ],
+      "objective": "Examinar marca do canal e limpar galhos do ponto de inspeção com 3 ações.",
+      "dialogue": [
+        {
+          "speaker": "Rainara",
+          "text": "Espera. Essa pedra tem uma marca. Minha mãe desenhava isso nas margens do caderno."
+        },
+        {
+          "speaker": "Jogador",
+          "text": "Uma folha?"
+        },
+        {
+          "speaker": "Rainara",
+          "text": "Duas linhas de água. Uma passa aqui. Ou passava."
+        },
+        {
+          "speaker": "Rainara",
+          "text": "Vamos mostrar ao Tião antes de mexer mais."
+        }
+      ],
+      "reward": {
+        "flags": [
+          "channel_marker_found"
+        ],
+        "story_items": [
+          "inspecao_desenho"
+        ]
+      },
+      "acceptance": "Objeto persistente muda para aberto; não invade terreno ocupado: localizar em margem pública reservada.",
+      "fallback": "Sem ferramenta equipada, ação remove galhos à mão; missão não exige machado melhorado."
+    },
+    {
+      "id": "Q06",
+      "title": "Onde havia correnteza",
+      "act": "II",
+      "place": "Lago",
+      "requires": [
+        "Q05"
+      ],
+      "objective": "Conversar com Tião e observar duas marcas de nível na margem.",
+      "dialogue": [
+        {
+          "speaker": "Tião",
+          "text": "Eu conheço essa marca. A água chegava até aquele risco."
+        },
+        {
+          "speaker": "Jogador",
+          "text": "Por que parou?"
+        },
+        {
+          "speaker": "Tião",
+          "text": "Teve uma tempestade. Depois, teve muito dia em que a gente deixou para amanhã."
+        },
+        {
+          "speaker": "Rainara",
+          "text": "A gente pode olhar o caminho?"
+        },
+        {
+          "speaker": "Tião",
+          "text": "Pode. Mas a ponte precisa de um reparo primeiro."
+        }
+      ],
+      "reward": {
+        "flags": [
+          "old_route_known"
+        ],
+        "story_items": [
+          "mapa_ponte"
+        ]
+      },
+      "acceptance": "Duas observações distintas e fala registrada; diário mostra ponte sem revelar toda a história.",
+      "fallback": "Tião oferece a fala na varanda durante chuva; não esperar clima específico."
+    },
+    {
+      "id": "Q07",
+      "title": "Tábuas para atravessar",
+      "act": "II",
+      "place": "Bosque",
+      "requires": [
+        "Q06"
+      ],
+      "objective": "Entregar 10 madeiras e 6 pedras a Augusto; acionar o reparo da ponte.",
+      "dialogue": [
+        {
+          "speaker": "Augusto",
+          "text": "A travessa está boa. São as tábuas que cansaram."
+        },
+        {
+          "speaker": "Rainara",
+          "text": "Podemos ajudar?"
+        },
+        {
+          "speaker": "Augusto",
+          "text": "Podem. E vou mostrar onde encaixa, para não dependerem de mim na próxima."
+        },
+        {
+          "speaker": "Rainara",
+          "text": "Essa parte eu gostei."
+        }
+      ],
+      "reward": {
+        "flags": [
+          "bridge_repaired"
+        ],
+        "unlock_regions": [
+          "bosque"
+        ]
+      },
+      "acceptance": "Ponte ganha colisão transitável; recursos debitados uma vez; Rainara atravessa com pathfinding.",
+      "fallback": "Materiais vendidos por Marta e obtidos em coleta renovável; interromper cena não duplica custo."
+    },
+    {
+      "id": "Q08",
+      "title": "O sino de Mimosa",
+      "act": "II",
+      "place": "Estação animal",
+      "requires": [
+        "Q07"
+      ],
+      "objective": "Ajudar Celina a escovar e abastecer a água de Mimosa, vaca comunitária, ou de uma vaca própria.",
+      "dialogue": [
+        {
+          "speaker": "Celina",
+          "text": "Mimosa se assusta com barulho de metal. Por isso vamos deixar as ferramentas ali."
+        },
+        {
+          "speaker": "Rainara",
+          "text": "Ela olhou quando você chamou pelo nome."
+        },
+        {
+          "speaker": "Celina",
+          "text": "Conhecer o animal vem antes de pedir alguma coisa a ele."
+        },
+        {
+          "speaker": "Rainara",
+          "text": "Acho que ela decidiu que sua manga é uma boa toalha."
+        }
+      ],
+      "reward": {
+        "flags": [
+          "large_animal_care_known"
+        ],
+        "items": {
+          "leite": 1
+        },
+        "unlock_species": [
+          "cow"
+        ]
+      },
+      "acceptance": "Escovação e água visíveis; leite de demonstração recebido uma vez, sem criar vaca gratuita.",
+      "fallback": "Vaca comunitária garante acesso à missão sem exigir compra ou estábulo próprio."
+    },
+    {
+      "id": "Q09",
+      "title": "Três versões da chuva",
+      "act": "II",
+      "place": "Praça",
+      "requires": [
+        "Q07"
+      ],
+      "objective": "Pedir licença e ouvir Marta, Augusto e Iara; mostrar registros a Luna.",
+      "dialogue": [
+        {
+          "speaker": "Luna",
+          "text": "Quero desenhar o que aconteceu. Mas primeiro preciso escutar."
+        },
+        {
+          "speaker": "Marta",
+          "text": "Naquela noite, o importante era tirar as pessoas das casas baixas."
+        },
+        {
+          "speaker": "Iara",
+          "text": "Depois, as flores da margem não voltaram. Cada um percebeu uma perda diferente."
+        },
+        {
+          "speaker": "Augusto",
+          "text": "Há coisas que eu devia ter explicado antes."
+        },
+        {
+          "speaker": "Luna",
+          "text": "Vou guardar as versões juntas. Uma não apaga a outra."
+        }
+      ],
+      "reward": {
+        "flags": [
+          "testimonies_recorded"
+        ],
+        "story_items": [
+          "relatos_tempestade"
+        ]
+      },
+      "acceptance": "Cada morador aceita registro; não repetir conversa da campanha no diálogo cotidiano.",
+      "fallback": "Permitir ouvir em vários dias; moradores em casa atendem a conversa de história pela porta."
+    },
+    {
+      "id": "Q10",
+      "title": "Flores para voltar",
+      "act": "II",
+      "place": "Bosque",
+      "requires": [
+        "Q08",
+        "Q09"
+      ],
+      "objective": "Plantar 3 mudas nativas em pontos públicos indicados por Iara.",
+      "dialogue": [
+        {
+          "speaker": "Iara",
+          "text": "Antes eu tinha colmeias aqui. Depois aprendi a cozinhar com o que ainda crescia."
+        },
+        {
+          "speaker": "Rainara",
+          "text": "A gente não precisa esperar tudo ficar pronto para começar um canteiro."
+        },
+        {
+          "speaker": "Iara",
+          "text": "Três mudas, então. Já é uma conversa com o futuro."
+        },
+        {
+          "speaker": "Iara",
+          "text": "As mudas eu trouxe. Vocês escolhem a ordem."
+        }
+      ],
+      "reward": {
+        "flags": [
+          "bank_flowers_planted"
+        ],
+        "unlock_species": [
+          "bee"
+        ]
+      },
+      "acceptance": "Três posições únicas, fases iniciais de crescimento e contribuição para o apiário.",
+      "fallback": "Mudas narrativas toleram qualquer estação; não são sementes de inventário vendáveis."
+    },
+    {
+      "id": "Q11",
+      "title": "A peça que ficou",
+      "act": "II",
+      "place": "Oficina",
+      "requires": [
+        "Q10"
+      ],
+      "objective": "Conversar com Augusto e examinar a peça de controle e sua marca.",
+      "dialogue": [
+        {
+          "speaker": "Augusto",
+          "text": "Eu tirei essa peça para ninguém abrir a comporta por impulso."
+        },
+        {
+          "speaker": "Jogador",
+          "text": "Por que não contou?"
+        },
+        {
+          "speaker": "Augusto",
+          "text": "Achei que explicar depois seria mais fácil. Fui ficando sem jeito de começar."
+        },
+        {
+          "speaker": "Rainara",
+          "text": "Então começa agora. Mostra como ela funciona."
+        }
+      ],
+      "reward": {
+        "flags": [
+          "gate_piece_found"
+        ],
+        "story_items": [
+          "peca_comporta"
+        ]
+      },
+      "acceptance": "Peça entra na bolsa de história, sem ser vendável ou consumida por receita.",
+      "fallback": "Não requer amizade alta; o contexto da missão libera a conversa."
+    },
+    {
+      "id": "Q12",
+      "title": "O primeiro banco de mudas",
+      "act": "II",
+      "place": "Viveiro",
+      "requires": [
+        "Q11"
+      ],
+      "objective": "Entregar 12 madeiras e 8 pedras; construir a primeira bancada e regar uma muda com Rainara.",
+      "dialogue": [
+        {
+          "speaker": "Rainara",
+          "text": "Eu planejei este banco umas vinte vezes. Sempre faltava alguma coisa."
+        },
+        {
+          "speaker": "Jogador",
+          "text": "O que faltava hoje?"
+        },
+        {
+          "speaker": "Rainara",
+          "text": "Eu dizer que precisava de ajuda."
+        },
+        {
+          "speaker": "Rainara",
+          "text": "Segura desse lado. Agora vai."
+        }
+      ],
+      "reward": {
+        "flags": [
+          "nursery_open"
+        ],
+        "trust": 8,
+        "unlock_buildings": [
+          "viveiro"
+        ]
+      },
+      "acceptance": "Viveiro muda visualmente e recebe interação; Rainara ganha rotina de trabalho real.",
+      "fallback": "Materiais comuns, sem cultura sazonal obrigatória; construção fora da fazenda migrada."
+    },
+    {
+      "id": "Q13",
+      "title": "Uma página de Helena",
+      "act": "II",
+      "place": "Varanda",
+      "requires": [
+        "Q12"
+      ],
+      "objective": "Ler a carta entregue na caixa e abrir o mapa do alto com Rainara.",
+      "dialogue": [
+        {
+          "speaker": "Rainara",
+          "text": "Minha mãe reconheceu a peça no desenho que mandamos."
+        },
+        {
+          "speaker": "Helena",
+          "text": "O desvio salvou casas naquela noite. Depois dele, faltou o trabalho que deveria vir junto."
+        },
+        {
+          "speaker": "Helena",
+          "text": "No alto existe um vertedouro. Não abram tudo de uma vez. Observem o que nasceu no caminho."
+        },
+        {
+          "speaker": "Rainara",
+          "text": "Ela deixou espaço na página. Disse que agora é a nossa vez de anotar."
+        }
+      ],
+      "reward": {
+        "flags": [
+          "helena_letter_read"
+        ],
+        "story_items": [
+          "mapa_alto"
+        ]
+      },
+      "acceptance": "Carta permanece legível no diário; mapa mostra rota e aviso de segurança.",
+      "fallback": "Caixa não exige passar mais um dia; carta disponível imediatamente após Q12."
+    },
+    {
+      "id": "Q14",
+      "title": "Subida acompanhada",
+      "act": "III",
+      "place": "Alto",
+      "requires": [
+        "Q13"
+      ],
+      "objective": "Convidar Rainara e seguir três marcos na trilha do alto.",
+      "dialogue": [
+        {
+          "speaker": "Rainara",
+          "text": "Eu vinha até a primeira curva quando era pequena. A mata parece maior agora."
+        },
+        {
+          "speaker": "Jogador",
+          "text": "Vamos devagar."
+        },
+        {
+          "speaker": "Rainara",
+          "text": "Se eu começar a andar na frente demais, me chama."
+        },
+        {
+          "speaker": "Rainara",
+          "text": "Olha a pedra. A mesma marca da fazenda."
+        }
+      ],
+      "reward": {
+        "flags": [
+          "upper_route_walked"
+        ],
+        "unlock_regions": [
+          "alto"
+        ],
+        "trust": 3
+      },
+      "acceptance": "Companheira acompanha transições; contador de marcos não reseta ao voltar.",
+      "fallback": "Rainara pode ser chamada no início da trilha; nenhuma penalidade por sair para cuidar da fazenda."
+    },
+    {
+      "id": "Q15",
+      "title": "A água encontrou outro lugar",
+      "act": "III",
+      "place": "Zona úmida",
+      "requires": [
+        "Q14"
+      ],
+      "objective": "Observar fluxo, vegetação e marcas de aves em três pontos; anotar com Rainara.",
+      "dialogue": [
+        {
+          "speaker": "Rainara",
+          "text": "A nascente ainda está aqui. A água saiu pelo outro lado."
+        },
+        {
+          "speaker": "Jogador",
+          "text": "E este lugar cresceu em volta dela."
+        },
+        {
+          "speaker": "Rainara",
+          "text": "Se puxarmos tudo de volta, vamos secar isso aqui."
+        },
+        {
+          "speaker": "Rainara",
+          "text": "O desenho antigo ajuda. Mas ele não mostra tudo que existe hoje."
+        }
+      ],
+      "reward": {
+        "flags": [
+          "wetland_discovered"
+        ],
+        "story_items": [
+          "mapa_fluxo_atual"
+        ]
+      },
+      "acceptance": "Diário registra habitat e motivo do fluxo controlado; ambiente não é coletável até desaparecer.",
+      "fallback": "Observações disponíveis em qualquer clima e hora; contraste indica os três pontos."
+    },
+    {
+      "id": "Q16",
+      "title": "O que Tião não disse",
+      "act": "III",
+      "place": "Ponte",
+      "requires": [
+        "Q15"
+      ],
+      "objective": "Ouvir Tião e Augusto juntos na ponte, convocados pelo caderno.",
+      "dialogue": [
+        {
+          "speaker": "Tião",
+          "text": "Fui eu quem abriu o desvio. Havia gente nas casas baixas."
+        },
+        {
+          "speaker": "Augusto",
+          "text": "Eu ajudei. Depois achei que bastava impedir alguém de mexer."
+        },
+        {
+          "speaker": "Tião",
+          "text": "Quando o barro baixou, eu devia ter voltado. Fiquei esperando que outra pessoa soubesse o que fazer."
+        },
+        {
+          "speaker": "Rainara",
+          "text": "A gente sabe o que aconteceu agora. Precisa decidir o que faz daqui para a frente."
+        }
+      ],
+      "reward": {
+        "flags": [
+          "storm_truth_known"
+        ],
+        "trust": 4
+      },
+      "acceptance": "Cena marca verdade descoberta; NPCs retornam à rotina, sem bloquear a ponte.",
+      "fallback": "Convocação reúne NPCs apenas durante a cena, respeitando retorno e save."
+    },
+    {
+      "id": "Q17",
+      "title": "Deixar espaço para a ajuda",
+      "act": "III",
+      "place": "Viveiro",
+      "requires": [
+        "Q16"
+      ],
+      "objective": "Conversar com Rainara e escolher como organizar o trabalho: medir juntos, chamar o grupo ou conversar primeiro.",
+      "dialogue": [
+        {
+          "speaker": "Rainara",
+          "text": "Eu queria abrir antes da semana seca. Já estava fazendo a lista sozinha de novo."
+        },
+        {
+          "speaker": "Jogador",
+          "text": "Escolha: vamos medir juntos; vamos chamar os outros; primeiro me conta como você está."
+        },
+        {
+          "speaker": "Rainara",
+          "text": "Eu fico com medo de parar e ninguém continuar."
+        },
+        {
+          "speaker": "Jogador",
+          "text": "Eu estou aqui. Mas preciso fazer parte da decisão."
+        },
+        {
+          "speaker": "Rainara",
+          "text": "Está bem. Vamos escrever um plano que caiba em mais mãos."
+        }
+      ],
+      "reward": {
+        "flags": [
+          "shared_plan_agreed"
+        ],
+        "trust": 8
+      },
+      "acceptance": "Salvar escolha de conversa; todas as opções mantêm parceria e conduzem ao plano seguro.",
+      "fallback": "Nenhuma resposta afasta Rainara ou tranca final; rever diálogo no diário."
+    },
+    {
+      "id": "Q18",
+      "title": "O quadro do mutirão",
+      "act": "IV",
+      "place": "Praça",
+      "requires": [
+        "Q17"
+      ],
+      "objective": "Participar da reunião e confirmar tarefas de água, margens e refeição.",
+      "dialogue": [
+        {
+          "speaker": "Marta",
+          "text": "Eu cuido da comida. Mas desta vez todo mundo vai saber quanto precisa trazer."
+        },
+        {
+          "speaker": "Celina",
+          "text": "Eu olho os bebedouros e a passagem dos animais."
+        },
+        {
+          "speaker": "Iara",
+          "text": "Eu fico com as margens. A água precisa chegar sem levar a terra embora."
+        },
+        {
+          "speaker": "Augusto",
+          "text": "Tião e eu montamos o controle. Vocês acompanham a leitura."
+        },
+        {
+          "speaker": "Rainara",
+          "text": "E no fim do dia, todo mundo descansa. Está no quadro."
+        }
+      ],
+      "reward": {
+        "flags": [
+          "workboard_open"
+        ],
+        "unlock_ui": [
+          "mutirao"
+        ]
+      },
+      "acceptance": "Quadro mostra 3 contribuições, saldos e conclusão; progresso persiste por tarefa.",
+      "fallback": "Sem cobrança por dia; itens doados são registrados e nunca exigidos de novo."
+    },
+    {
+      "id": "Q19",
+      "title": "O trabalho de muitas mãos",
+      "act": "IV",
+      "place": "Praça e Alto",
+      "requires": [
+        "Q18"
+      ],
+      "objective": "Contribuir 20 madeiras + 12 pedras; entregar 2 comidas prontas de qualquer receita válida; plantar 3 mudas fornecidas.",
+      "dialogue": [
+        {
+          "speaker": "Luna",
+          "text": "Desenhei as placas. Esta seta estava mandando todo mundo para o quintal da Marta."
+        },
+        {
+          "speaker": "Marta",
+          "text": "Podia ser pior. Eu ia cobrar o almoço."
+        },
+        {
+          "speaker": "Rainara",
+          "text": "Cada parte pronta ficou marcada. Dá para ver o vale trabalhando."
+        },
+        {
+          "speaker": "Augusto",
+          "text": "Agora podemos testar sem apostar tudo numa puxada."
+        }
+      ],
+      "reward": {
+        "flags": [
+          "spillway_built",
+          "banks_ready",
+          "meal_ready"
+        ],
+        "trust": 6
+      },
+      "acceptance": "Três grupos independentes; doação parcial permitida; não consumir comida reservada sem confirmar.",
+      "fallback": "Comidas podem ser compradas; flores são fornecidas; fontes renováveis impedem falta definitiva de madeira."
+    },
+    {
+      "id": "Q20",
+      "title": "A primeira abertura",
+      "act": "IV",
+      "place": "Comporta",
+      "requires": [
+        "Q19"
+      ],
+      "objective": "Confirmar teste com Rainara; usar ação para abrir 1/3; observar água turva; fechar e limpar o filtro com 3 ações.",
+      "dialogue": [
+        {
+          "speaker": "Tião",
+          "text": "Primeiro só um pouco. Olhem a marca clara na pedra."
+        },
+        {
+          "speaker": "Rainara",
+          "text": "Estou vendo daqui. Pode abrir."
+        },
+        {
+          "speaker": "Rainara",
+          "text": "A água turvou. Fecha um instante; tem galho no filtro."
+        },
+        {
+          "speaker": "Augusto",
+          "text": "Foi para isso que fizemos o teste."
+        },
+        {
+          "speaker": "Rainara",
+          "text": "Desta vez a gente parou na hora certa."
+        }
+      ],
+      "reward": {
+        "flags": [
+          "filter_cleared",
+          "first_flow_tested"
+        ]
+      },
+      "acceptance": "Ação sem timing punitivo; Rainara assume observação; filtro limpo persiste e teste não destrói nada.",
+      "fallback": "Ao recarregar no meio, voltar à etapa segura com comporta fechada; não reiniciar recursos do mutirão."
+    },
+    {
+      "id": "Q21",
+      "title": "O primeiro excedente",
+      "act": "IV",
+      "place": "Comporta",
+      "requires": [
+        "Q20"
+      ],
+      "objective": "Escolher pomar comunitário OU área sombreada dos animais como primeiro projeto beneficiado.",
+      "dialogue": [
+        {
+          "speaker": "Celina",
+          "text": "O fluxo está estável. Temos água para começar mais um espaço."
+        },
+        {
+          "speaker": "Iara",
+          "text": "Podemos preparar o pomar."
+        },
+        {
+          "speaker": "Celina",
+          "text": "Ou a área de sombra dos animais."
+        },
+        {
+          "speaker": "Rainara",
+          "text": "Os dois cabem no futuro. Qual a gente começa agora?"
+        }
+      ],
+      "reward": {
+        "flags": [
+          "first_project_chosen"
+        ],
+        "choice": "pomar|sombra"
+      },
+      "acceptance": "Salvar escolha; aplicar só um projeto gratuito e abrir o outro no pós-jogo.",
+      "fallback": "Mostrar função de cada projeto; cancelar menu não confirma escolha; nenhuma opção elimina conteúdo."
+    },
+    {
+      "id": "Q22",
+      "title": "Duas águas outra vez",
+      "act": "IV",
+      "place": "Comporta e Fazenda",
+      "requires": [
+        "Q21"
+      ],
+      "objective": "Abrir fluxo definitivo gradual, confirmar observação com Rainara e visitar a confluência na fazenda.",
+      "dialogue": [
+        {
+          "speaker": "Rainara",
+          "text": "A marca parou de subir. A outra passagem continua correndo."
+        },
+        {
+          "speaker": "Tião",
+          "text": "Então deixem assim. Amanhã a gente mede de novo."
+        },
+        {
+          "speaker": "Jogador",
+          "text": "Dá para ouvir as duas daqui."
+        },
+        {
+          "speaker": "Rainara",
+          "text": "Eu tinha esquecido que eram sons diferentes."
+        }
+      ],
+      "reward": {
+        "flags": [
+          "water_restored"
+        ],
+        "trust": 10,
+        "unlock_projects": [
+          "postgame_second_project"
+        ]
+      },
+      "acceptance": "Visual e som do canal mudam, habitat preservado, flag global propagada nas regiões.",
+      "fallback": "Restauro idempotente; recarregar não fecha fluxo nem reaplica recompensa."
+    },
+    {
+      "id": "Q23",
+      "title": "A mesa comprida",
+      "act": "Epílogo",
+      "place": "Praça",
+      "requires": [
+        "Q22"
+      ],
+      "objective": "Escolher quando iniciar o Festival das Duas Águas e levar um alimento qualquer, inclusive comprado.",
+      "dialogue": [
+        {
+          "speaker": "Marta",
+          "text": "A mesa cresceu. A panela também."
+        },
+        {
+          "speaker": "Luna",
+          "text": "Todo mundo autorizou o desenho. Bento não ficou parado, mas isso faz parte."
+        },
+        {
+          "speaker": "Augusto",
+          "text": "Deixei parafusos comuns. Se soltar, qualquer um consegue apertar."
+        },
+        {
+          "speaker": "Iara",
+          "text": "Tem pão, tem mel e tem lugar."
+        },
+        {
+          "speaker": "Rainara",
+          "text": "Minha mãe mandou uma carta. Vou guardar para ler com você depois."
+        }
+      ],
+      "reward": {
+        "flags": [
+          "festival_completed"
+        ],
+        "decor": [
+          "retrato_comunidade"
+        ]
+      },
+      "acceptance": "Festival inicia por confirmação, preserva animais, pausa relógio e retorna ao ponto seguro.",
+      "fallback": "Marta oferece um pão se inventário sem alimento e saldo insuficiente; não bloquear conclusão."
+    },
+    {
+      "id": "Q24",
+      "title": "Fica mais um pouco",
+      "act": "Epílogo",
+      "place": "Varanda",
+      "requires": [
+        "Q23"
+      ],
+      "objective": "Sentar com Rainara, ler a última carta e escolher uma fala de parceria; ver ou pular créditos.",
+      "dialogue": [
+        {
+          "speaker": "Rainara",
+          "text": "Quando trouxe a segunda cadeira, pensei que talvez ela ficasse vazia de novo."
+        },
+        {
+          "speaker": "Jogador",
+          "text": "Escolha: ainda temos muito para aprender; quero construir essa vida com você; esta já é a nossa casa."
+        },
+        {
+          "speaker": "Rainara",
+          "text": "Agora coloquei outra ali. Para quando alguém vier visitar."
+        },
+        {
+          "speaker": "Helena",
+          "text": "Vocês não devolveram o vale ao que era. Deram a ele um jeito de continuar."
+        },
+        {
+          "speaker": "Rainara",
+          "text": "Amanhã a gente vê o que precisa de cuidado. Hoje, fica mais um pouco."
+        }
+      ],
+      "reward": {
+        "flags": [
+          "campaign_complete",
+          "postgame_open"
+        ],
+        "trust": 10
+      },
+      "acceptance": "Créditos puláveis, controle retorna na manhã seguinte; Rainara presente; final não se repete.",
+      "fallback": "Fala romântica só recebe tratamento romântico se romance opt-in; parceria sempre permite final completo."
+    }
+  ],
+  "personal_events": [
+    {
+      "id": "R01",
+      "title": "A muda torta",
+      "character": "rainara",
+      "condition": "Confiança >=10; Q02 concluída",
+      "place": "Viveiro",
+      "dialogue": [
+        {
+          "speaker": "Rainara",
+          "text": "Esta muda inclinou para a luz. Eu estava chamando de torta o que era só uma procura."
+        },
+        {
+          "speaker": "Jogador",
+          "text": "Vamos virar o vaso?"
+        },
+        {
+          "speaker": "Rainara",
+          "text": "Vamos. Um pouco por dia."
+        }
+      ],
+      "effect": {
+        "trust": 8,
+        "memory": "muda_torta"
+      },
+      "repeat": "once",
+      "interruption": "resume_from_checkpoint"
+    },
+    {
+      "id": "R02",
+      "title": "Debaixo da mesa",
+      "character": "rainara",
+      "condition": "Confiança >=25; Q04 concluída; após 18h; chuva OU 2 dias de espera",
+      "place": "Casa",
+      "dialogue": [
+        {
+          "speaker": "Rainara",
+          "text": "Bento não quer sair daí. Trouxe uma manta."
+        },
+        {
+          "speaker": "Jogador",
+          "text": "Posso sentar aqui?"
+        },
+        {
+          "speaker": "Rainara",
+          "text": "Pode. A gente não precisa convencer ninguém de que o trovão é bonito."
+        },
+        {
+          "speaker": "Rainara",
+          "text": "Olha. Ele já soltou a orelha."
+        }
+      ],
+      "effect": {
+        "trust": 8,
+        "memory": "abrigo_bento"
+      },
+      "repeat": "once",
+      "interruption": "resume_from_checkpoint"
+    },
+    {
+      "id": "R03",
+      "title": "Uma lista menor",
+      "character": "rainara",
+      "condition": "Confiança >=40; Q12 concluída",
+      "place": "Varanda",
+      "dialogue": [
+        {
+          "speaker": "Rainara",
+          "text": "Minha lista ocupou as duas páginas."
+        },
+        {
+          "speaker": "Jogador",
+          "text": "O que precisa mesmo ser hoje?"
+        },
+        {
+          "speaker": "Rainara",
+          "text": "Água, comida e esta conversa."
+        },
+        {
+          "speaker": "Rainara",
+          "text": "O resto a gente divide. Acho que cabem dois combinados por dia, se um de nós puder dizer chega."
+        }
+      ],
+      "effect": {
+        "trust": 8,
+        "companion_tasks_per_day": 2
+      },
+      "repeat": "once",
+      "interruption": "resume_from_checkpoint"
+    },
+    {
+      "id": "R04",
+      "title": "Escolher ficar",
+      "character": "rainara",
+      "condition": "Confiança >=60; Q17 concluída",
+      "place": "Mirante",
+      "dialogue": [
+        {
+          "speaker": "Rainara",
+          "text": "Eu sempre dizia que fiquei porque alguém precisava cuidar daqui."
+        },
+        {
+          "speaker": "Rainara",
+          "text": "Hoje eu consigo dizer outra coisa. Eu gosto da vida que estamos fazendo."
+        },
+        {
+          "speaker": "Jogador",
+          "text": "Escolha: nossa amizade importa para mim; quero conversar sobre nós como casal."
+        },
+        {
+          "speaker": "Rainara",
+          "text": "Podemos conversar sem pressa. Nenhuma resposta apaga o que já construímos."
+        }
+      ],
+      "effect": {
+        "trust": 8,
+        "romance": "explicit_choice_only"
+      },
+      "repeat": "once",
+      "interruption": "resume_from_checkpoint"
+    },
+    {
+      "id": "R05",
+      "title": "Um espaço na varanda",
+      "character": "rainara",
+      "condition": "Confiança >=80; Q24 concluída",
+      "place": "Varanda",
+      "dialogue": [
+        {
+          "speaker": "Rainara",
+          "text": "Pensei em aumentar a mesa. Sem tirar nossas cadeiras do lugar."
+        },
+        {
+          "speaker": "Jogador",
+          "text": "Quem você quer chamar primeiro?"
+        },
+        {
+          "speaker": "Rainara",
+          "text": "Luna. Ela já desenhou a varanda nova antes de perguntar."
+        },
+        {
+          "speaker": "Rainara",
+          "text": "Depois a gente combina um dia só nosso, sem lista."
+        }
+      ],
+      "effect": {
+        "trust": 8,
+        "decor": "mesa_varanda",
+        "memory": "espaco_para_visitas"
+      },
+      "repeat": "once",
+      "interruption": "resume_from_checkpoint"
+    },
+    {
+      "id": "M01",
+      "title": "Livro de fiados",
+      "character": "marta",
+      "condition": "Amizade >=2; Q09 concluída; entregar 1 sopa",
+      "place": "Armazém",
+      "dialogue": [
+        {
+          "speaker": "Marta",
+          "text": "Eu anotava a dívida de todo mundo e esquecia de anotar quando precisava de ajuda."
+        },
+        {
+          "speaker": "Jogador",
+          "text": "Podemos organizar uma contribuição conjunta?"
+        },
+        {
+          "speaker": "Marta",
+          "text": "Podemos. Mas vamos escrever um valor que caiba no bolso de cada um."
+        },
+        {
+          "speaker": "Marta",
+          "text": "Leve esta receita. Essa conta já está paga."
+        }
+      ],
+      "effect": {
+        "recipe": "pao_milho",
+        "decor": "prateleira"
+      },
+      "repeat": "once",
+      "interruption": "resume_from_checkpoint"
+    },
+    {
+      "id": "T01",
+      "title": "Banco da margem",
+      "character": "tiao",
+      "condition": "Amizade >=2; Q16 concluída; doar 6 madeiras",
+      "place": "Lago",
+      "dialogue": [
+        {
+          "speaker": "Tião",
+          "text": "Este banco era para duas pessoas. Eu vivia deixando a caixa de pesca no outro lugar."
+        },
+        {
+          "speaker": "Jogador",
+          "text": "Posso tirar a caixa?"
+        },
+        {
+          "speaker": "Tião",
+          "text": "Pode. Hoje eu não trouxe assunto para fugir da conversa."
+        }
+      ],
+      "effect": {
+        "recipe": "isca_simples",
+        "decor": "banco_margem"
+      },
+      "repeat": "once",
+      "interruption": "resume_from_checkpoint"
+    },
+    {
+      "id": "L01",
+      "title": "Retratos com licença",
+      "character": "luna",
+      "condition": "Amizade >=2; Q09 concluída; recolher consentimento de 3 moradores",
+      "place": "Atelier",
+      "dialogue": [
+        {
+          "speaker": "Luna",
+          "text": "Marta pediu para eu desenhar as mãos também. Disse que trabalham mais que o rosto."
+        },
+        {
+          "speaker": "Jogador",
+          "text": "E o seu retrato?"
+        },
+        {
+          "speaker": "Luna",
+          "text": "Ainda falta. Acho que quero me desenhar com uma mala e uma chave."
+        },
+        {
+          "speaker": "Luna",
+          "text": "Para lembrar que estudar fora e ter para onde voltar podem ser a mesma vida."
+        }
+      ],
+      "effect": {
+        "decor": "retrato_luna",
+        "memory": "exposicao"
+      },
+      "repeat": "once",
+      "interruption": "resume_from_checkpoint"
+    },
+    {
+      "id": "C01",
+      "title": "Plantão dividido",
+      "character": "celina",
+      "condition": "Amizade >=2; Q08 concluída; 3 dias distintos de cuidado em qualquer animal",
+      "place": "Estação",
+      "dialogue": [
+        {
+          "speaker": "Celina",
+          "text": "Cheguei e vocês já tinham notado que faltava água."
+        },
+        {
+          "speaker": "Rainara",
+          "text": "Aprendemos com alguém bastante insistente."
+        },
+        {
+          "speaker": "Celina",
+          "text": "Estou tentando aprender a não fazer a mesma explicação cinco vezes."
+        },
+        {
+          "speaker": "Celina",
+          "text": "Vou deixar o quadro aqui. Quem observa primeiro anota."
+        }
+      ],
+      "effect": {
+        "unlock": "adoption_and_breeding",
+        "item": "escova"
+      },
+      "repeat": "once",
+      "interruption": "resume_from_checkpoint"
+    },
+    {
+      "id": "A01",
+      "title": "A cadeira que balança",
+      "character": "augusto",
+      "condition": "Amizade >=2; Q11 concluída; doar 4 madeiras",
+      "place": "Oficina",
+      "dialogue": [
+        {
+          "speaker": "Augusto",
+          "text": "Esta perna ficou curta. Em vez de corrigir, eu guardei a cadeira."
+        },
+        {
+          "speaker": "Jogador",
+          "text": "Ainda dá para usar?"
+        },
+        {
+          "speaker": "Augusto",
+          "text": "Dá. Às vezes a parte difícil é tirar do canto."
+        },
+        {
+          "speaker": "Augusto",
+          "text": "Você segura enquanto eu marco?"
+        }
+      ],
+      "effect": {
+        "decor": "cadeira_balanco",
+        "unlock": "furniture_catalog"
+      },
+      "repeat": "once",
+      "interruption": "resume_from_checkpoint"
+    },
+    {
+      "id": "I01",
+      "title": "Receita sem medida",
+      "character": "iara",
+      "condition": "Amizade >=2; Q10 concluída; entregar 1 mel comprado ou produzido",
+      "place": "Cozinha",
+      "dialogue": [
+        {
+          "speaker": "Iara",
+          "text": "Minha receita dizia um tanto de mel. Péssima instrução para quem está começando."
+        },
+        {
+          "speaker": "Jogador",
+          "text": "Vamos medir agora?"
+        },
+        {
+          "speaker": "Iara",
+          "text": "Vamos. E depois cada pessoa encontra o seu tanto."
+        },
+        {
+          "speaker": "Iara",
+          "text": "Sobrou uma fatia. A Rainara está no viveiro?"
+        }
+      ],
+      "effect": {
+        "recipe": "pao_mel",
+        "unlock": "apiary_upgrade"
+      },
+      "repeat": "once",
+      "interruption": "resume_from_checkpoint"
+    },
+    {
+      "id": "B01",
+      "title": "O ninho escolhido",
+      "character": "pipoca",
+      "condition": "Galinha existente; vínculo >=10; construir ninho",
+      "place": "Galinheiro",
+      "dialogue": [
+        {
+          "speaker": "Rainara",
+          "text": "Pipoca escolheu o cesto das luvas."
+        },
+        {
+          "speaker": "Jogador",
+          "text": "Podemos oferecer outro cesto?"
+        },
+        {
+          "speaker": "Rainara",
+          "text": "Trouxe palha. Vamos deixar perto do lugar que ela já escolheu."
+        }
+      ],
+      "effect": {
+        "animal_behavior": "nest_preference",
+        "memory": "pipoca_ninho"
+      },
+      "repeat": "once",
+      "interruption": "resume_from_checkpoint"
+    },
+    {
+      "id": "B02",
+      "title": "Sem pressa com Mimosa",
+      "character": "mimosa",
+      "condition": "Vaca existente; 3 interações de escova em dias diferentes",
+      "place": "Estábulo",
+      "dialogue": [
+        {
+          "speaker": "Celina",
+          "text": "Hoje ela veio antes de você chamar."
+        },
+        {
+          "speaker": "Rainara",
+          "text": "Augusto combinou de martelar depois. Acho que todo mundo está aprendendo."
+        },
+        {
+          "speaker": "Celina",
+          "text": "Confiança também tem horário e silêncio."
+        }
+      ],
+      "effect": {
+        "animal_affinity": 8,
+        "memory": "mimosa_confianca"
+      },
+      "repeat": "once",
+      "interruption": "resume_from_checkpoint"
+    },
+    {
+      "id": "B03",
+      "title": "Um lugar alto",
+      "character": "jujuba",
+      "condition": "Cabra existente; construir plataforma segura",
+      "place": "Estábulo",
+      "dialogue": [
+        {
+          "speaker": "Rainara",
+          "text": "Ela subiu no caixote outra vez."
+        },
+        {
+          "speaker": "Augusto",
+          "text": "Posso fazer um lugar próprio para isso."
+        },
+        {
+          "speaker": "Rainara",
+          "text": "Você ouviu, Jujuba? Vai ganhar uma varanda antes de mim."
+        }
+      ],
+      "effect": {
+        "animal_behavior": "climb_platform"
+      },
+      "repeat": "once",
+      "interruption": "resume_from_checkpoint"
+    },
+    {
+      "id": "B04",
+      "title": "A escova de Brisa",
+      "character": "brisa",
+      "condition": "Ovelha existente; escovar em 3 dias distintos",
+      "place": "Estábulo",
+      "dialogue": [
+        {
+          "speaker": "Rainara",
+          "text": "Brisa ouviu a escova na caixa e veio andando."
+        },
+        {
+          "speaker": "Jogador",
+          "text": "Ela já conhece o som."
+        },
+        {
+          "speaker": "Rainara",
+          "text": "E eu já sei que preciso trazer mais tempo do que pressa."
+        }
+      ],
+      "effect": {
+        "animal_behavior": "approach_brush"
+      },
+      "repeat": "once",
+      "interruption": "resume_from_checkpoint"
+    },
+    {
+      "id": "B05",
+      "title": "A volta de Pingo",
+      "character": "pingo",
+      "condition": "Pato existente; lago e rampa construídos",
+      "place": "Lago dos patos",
+      "dialogue": [
+        {
+          "speaker": "Rainara",
+          "text": "Bento mostrou a água. Esqueceu de mostrar o caminho de volta."
+        },
+        {
+          "speaker": "Celina",
+          "text": "Com a rampa, ele entra e sai sozinho."
+        },
+        {
+          "speaker": "Rainara",
+          "text": "Agora os dois estão satisfeitos com a visita."
+        }
+      ],
+      "effect": {
+        "animal_behavior": "swim_loop"
+      },
+      "repeat": "once",
+      "interruption": "resume_from_checkpoint"
+    },
+    {
+      "id": "B06",
+      "title": "A cadeira da Amora",
+      "character": "amora",
+      "condition": "Cozinha disponível; cama, água e alimento preparados",
+      "place": "Casa",
+      "dialogue": [
+        {
+          "speaker": "Rainara",
+          "text": "A visita escolheu sua cadeira."
+        },
+        {
+          "speaker": "Jogador",
+          "text": "E esta cama perto da janela?"
+        },
+        {
+          "speaker": "Rainara",
+          "text": "Podemos oferecer. A palavra final parece ser dela."
+        },
+        {
+          "speaker": "Rainara",
+          "text": "Olha só. Aceitou. Por enquanto."
+        }
+      ],
+      "effect": {
+        "pet": "cat",
+        "memory": "amora_adotada"
+      },
+      "repeat": "once",
+      "interruption": "resume_from_checkpoint"
+    }
+  ],
+  "postgame": [
+    {
+      "id": "P01",
+      "title": "O outro projeto",
+      "requires": [
+        "Q24"
+      ],
+      "objective": "Construir o projeto não escolhido em Q21 com 250 G, 15 madeira e 10 pedra.",
+      "reward": "Pomar OU sombra completos; ambos agora presentes.",
+      "dialogue": [
+        [
+          "Rainara",
+          "Desta vez não precisamos escolher qual fica para depois."
+        ],
+        [
+          "Jogador",
+          "Tem espaço para os dois."
+        ]
+      ]
+    },
+    {
+      "id": "P02",
+      "title": "Uma parede de histórias",
+      "requires": [
+        "Q24",
+        "L01"
+      ],
+      "objective": "Pendurar três retratos autorizados na praça.",
+      "reward": "Exposição permanente e falas pós-campanha.",
+      "dialogue": [
+        [
+          "Luna",
+          "Este espaço ficou vazio de propósito. Ainda tem história chegando."
+        ],
+        [
+          "Rainara",
+          "Então não guarde o lápis."
+        ]
+      ]
+    },
+    {
+      "id": "P03",
+      "title": "A primeira feira",
+      "requires": [
+        "Q24"
+      ],
+      "objective": "Levar três categorias de produto, compradas ou produzidas, sem mínimo de qualidade.",
+      "reward": "Banca pessoal decorativa e feira semanal.",
+      "dialogue": [
+        [
+          "Marta",
+          "Tem produto seu, do vale e de vizinho. Assim começa uma feira."
+        ],
+        [
+          "Iara",
+          "Eu vim pela conversa. E pelo queijo."
+        ]
+      ]
+    },
+    {
+      "id": "P04",
+      "title": "Um dia sem lista",
+      "requires": [
+        "Q24",
+        "R05"
+      ],
+      "objective": "Convidar Rainara para um passeio opcional; nenhuma coleta obrigatória.",
+      "reward": "Memória de convivência e retrato da dupla.",
+      "dialogue": [
+        [
+          "Rainara",
+          "Trouxe comida, uma manta e nada para consertar."
+        ],
+        [
+          "Jogador",
+          "Nem uma ferramenta?"
+        ],
+        [
+          "Rainara",
+          "Só uma colher. Pretendo usar bastante."
+        ]
+      ]
+    }
+  ],
+  "rules": {
+    "unique_rewards": true,
+    "time_limits_on_main_quests": false,
+    "items_in_story_bag_non_sellable": true,
+    "companion_permanent": true,
+    "romance_optional": true,
+    "outside_game_time_does_not_advance": true
+  }
+}
