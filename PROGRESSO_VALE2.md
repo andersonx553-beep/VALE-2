@@ -87,3 +87,14 @@ Verificação: `node tests/m6.cjs` passou com 4.289 frames válidos, 42,52 MiB e
 - Chromium headless, sem solicitações remotas: 1280×720 a 59,998 FPS (p95 16,7 ms), 360×800 a 60,318 FPS (p95 16,8 ms, simulação CPU ×4) e 800×360 a 60,183 FPS (p95 16,7 ms, CPU ×4), com 24 animais e pico de 8 vozes. Isso mede o navegador simulado; não substitui teste em aparelho físico.
 - Cenários econômicos de 14 dias construíram o primeiro abrigo nos três perfis: cultivo no dia 4, pesca e criação no dia 1. O cenário maximiza uma atividade de cada vez; os saldos não são comparação de esforço equivalente.
 - Servidor local de teste continuou ativo em `127.0.0.1:8000`.
+
+
+## M8 implementado — controles profissionais desktop/mobile
+
+- Criado `GameInput`, uma camada única de entrada que desacopla gameplay de teclado e touchscreen e já expõe pacote futuro `{moveX, moveY, run, action, tool}` para o multiplayer LAN.
+- Desktop: WASD + setas preservados, ação/ferramenta separadas, inventário, caderno e mapa por teclado, corrida em modo segurar/alternar, remapeamento com detecção de conflito e restauração dos padrões.
+- Mobile: joystick analógico 360° como padrão, D-pad opcional, joystick fixo/flutuante, zona morta, sensibilidade, tamanhos, opacidade, modo canhoto, feedback visual, vibração opcional e multitouch para andar + correr/ação/ferramenta.
+- Layout mobile respeita safe areas e prioriza paisagem com aviso em retrato; a barra de itens original e todo o visual M0–M7 foram preservados.
+- Preferências de controle usam `vale-a-dois-controls-v1` no `localStorage`, separadas do save da fazenda.
+- Adicionado `tests/m8.cjs` para regressão de remapeamento, velocidade diagonal, joystick, multitouch, corrida, reset após perda de foco e formato do pacote de input.
+- Limitação desta execução: o código e o teste tiveram sintaxe validada, mas não houve teste em aparelho Android físico. O teste Playwright deve ser executado no ambiente do projeto com Chromium/Playwright disponíveis.
