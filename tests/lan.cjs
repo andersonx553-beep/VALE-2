@@ -4,7 +4,7 @@ const {spawn}=require('node:child_process');
 const assert=require('node:assert/strict');
 (async()=>{
  let relay;try{await fetch('http://127.0.0.1:8765')}catch{relay=spawn(process.execPath,['lan/dev-server.cjs'],{stdio:'ignore'});await new Promise(r=>setTimeout(r,300))}
- const browser=await chromium.launch(),context=await browser.newContext(),host=await context.newPage(),guest=await context.newPage(),errors=[];
+ const browser=await chromium.launch({executablePath:process.env.CHROMIUM_EXECUTABLE_PATH||undefined,args:['--no-sandbox']}),context=await browser.newContext(),host=await context.newPage(),guest=await context.newPage(),errors=[];
  for(const page of [host,guest])page.on('pageerror',e=>errors.push(e.message));
  for(const[page,name]of[[host,'Host'],[guest,'Convidado']]){await page.goto('http://127.0.0.1:8000');await page.evaluate(()=>openCoop());await page.locator('#coopName').fill(name)}
  await host.locator('#coopCreate').click();await guest.locator('#coopIP').fill('127.0.0.1');await guest.locator('#coopJoin').click();
