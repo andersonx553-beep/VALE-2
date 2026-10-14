@@ -169,7 +169,7 @@ public class ValeLanPlugin extends Plugin {
     private static byte[] readBytes(InputStream in,int len)throws Exception{byte[] data=new byte[len];int pos=0;while(pos<len){int n=in.read(data,pos,len-pos);if(n<0)return null;pos+=n;}return data;}
     private static void writeFrame(OutputStream out,int opcode,byte[] payload)throws Exception{
         out.write(0x80|opcode);
-        int len=payload.length;if(len<126)out.write(len);else if(len<65536){out.write(126);out.write((len>>8)&255);out.write(len&255);}else{out.write(127);for(int i=7;i>=0;i--)out.write(((long)len>>(8*i))&255);}
+        int len=payload.length;if(len<126)out.write(len);else if(len<65536){out.write(126);out.write((len>>8)&255);out.write(len&255);}else{out.write(127);for(int i=7;i>=0;i--)out.write((int)(((long)len>>(8*i))&255));}
         out.write(payload);out.flush();
     }
     private void shutdown(){running=false;try{server.close();}catch(Exception ignored){}synchronized(guard){try{if(peer!=null)peer.close();}catch(Exception ignored){}peer=null;}if(nsd!=null&&registration!=null)try{nsd.unregisterService(registration);}catch(Exception ignored){}registration=null;}

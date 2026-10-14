@@ -99,6 +99,13 @@ Verificação: `node tests/m6.cjs` passou com 4.289 frames válidos, 42,52 MiB e
 - Adicionado `tests/m8.cjs` para regressão de remapeamento, velocidade diagonal, joystick, multitouch, corrida, reset após perda de foco e formato do pacote de input.
 - Limitação desta execução: o código e o teste tiveram sintaxe validada, mas não houve teste em aparelho Android físico. O teste Playwright deve ser executado no ambiente do projeto com Chromium/Playwright disponíveis.
 
+## Base canônica, gaps, LAN e Android — branch atual
+
+- O visual do HTML aprovado foi incorporado às fontes de `src/`, preservando o M8 já integrado à `main`; `npm run build:web` reproduz o `index.html` autocontido e prepara `www/` para o Capacitor.
+- A auditoria item a item está em `AUDITORIA_GAPS.md`. A arte, os mapas opcionais, retratos em conversas, aniversários, aparências, relíquias, ferramentas, colheitas, feno e obras foram integrados sem duplicar os sistemas M0–M7.
+- O host LAN Android oferece WebSocket local, anúncio NSD e IP manual. Duas instâncias independentes passaram o teste de conexão, terceiro rejeitado, movimento, cultivo, comércio, cuidado animal, dia/clima, reconexão e save do host. No cooperativo, diálogos de missão, festivais, construção e máquinas ainda dependem do host; o modo solo mantém esses sistemas.
+- A suíte local M0–M8, campanha, economia, gaps, LAN e desempenho passou. O M6 mede 8.274 frames e 65,74 MiB estimados com os dois mapas opcionais. A regressão web da Action passou; a compilação do APK ainda está sendo corrigida. Testes em dois celulares físicos não ocorreram.
+
 
 ## M9 em andamento — HTML canônico, lacunas, LAN e Android
 
