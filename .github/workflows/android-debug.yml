@@ -35,7 +35,17 @@ jobs:
       - name: Browser and LAN regressions
         run: |
           for test in m0 m1 m2 m3 m4 m5 m6 m7 m8 campaign economy gaps lan performance; do
-            node tests/$test.cjs
+            if ! node tests/$test.cjs > /tmp/vale-test.log 2>&1; then
+              cat /tmp/vale-test.log
+              {
+                echo "### Failed browser test: $test"
+                echo '```'
+                tail -n 50 /tmp/vale-test.log
+                echo '```'
+              } >> "$GITHUB_STEP_SUMMARY"
+              exit 1
+            fi
+            cat /tmp/vale-test.log
           done
   android-apk:
     needs: web-regression

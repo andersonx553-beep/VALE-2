@@ -4,7 +4,7 @@ const {spawn}=require('node:child_process');
 const assert=require('node:assert/strict');
 (async()=>{
  let relay;try{await fetch('http://127.0.0.1:8765')}catch{relay=spawn(process.execPath,['lan/dev-server.cjs'],{stdio:'ignore'});await new Promise(r=>setTimeout(r,300))}
- const browser=await chromium.launch({executablePath:process.env.CHROMIUM_EXECUTABLE_PATH||undefined,args:['--no-sandbox']}),context=await browser.newContext(),host=await context.newPage(),guest=await context.newPage(),errors=[];
+ const browser=await chromium.launch({executablePath:process.env.CHROMIUM_EXECUTABLE_PATH||undefined,args:['--no-sandbox']}),hostContext=await browser.newContext(),guestContext=await browser.newContext(),host=await hostContext.newPage(),guest=await guestContext.newPage(),errors=[];
  for(const page of [host,guest])page.on('pageerror',e=>errors.push(e.message));
  for(const[page,name]of[[host,'Host'],[guest,'Convidado']]){await page.goto('http://127.0.0.1:8000');await page.evaluate(()=>openCoop());await page.locator('#coopName').fill(name)}
  await host.locator('#coopCreate').click();await guest.locator('#coopIP').fill('127.0.0.1');await guest.locator('#coopJoin').click();
@@ -27,7 +27,7 @@ const assert=require('node:assert/strict');
  await guest.evaluate(id=>coopSendCommand('CARE',{animal:id,action:'pet'}),animal);await host.waitForFunction(id=>farm.animals.find(a=>a.id===id)?.pet===day,animal);
  const oldDay=await host.evaluate(()=>day);await host.evaluate(()=>{newDay();rain=1;queueSave()});await guest.waitForFunction(d=>day===d+1&&rain===1,oldDay);
  const peerSaved=await host.evaluate(()=>{save();return {x:world.coop.x,seed:world.coop.inventory.s0}});
- await guest.evaluate(()=>coop.transport.close());await guest.waitForFunction(()=>coop.joined,{timeout:10000});assert.equal(await host.evaluate(()=>coop.connected),true);
+ await guest.evaluate(()=>coop.transport.close());await guest.waitForFunction(()=>!coop.connected);await guest.waitForFunction(()=>coop.connected&&coop.joined,null,{timeout:10000});await host.waitForFunction(()=>coop.connected);
  await host.reload();const restored=await host.evaluate(()=>({x:world.coop?.x,seed:world.coop?.inventory.s0}));assert.deepEqual(restored,peerSaved);
  await guest.waitForFunction(()=>coop.mode==='off');assert.equal(await guest.evaluate(()=>localStorage.getItem(SAVE_KEY)),null,'guest never writes host world into its local single-player slot');
  assert.deepEqual(errors,[]);await browser.close();if(relay)relay.kill();console.log('PASS LAN: 2 instances, third rejected, movement, plant/water/harvest, buy/sell, animal care, day/weather, reconnect, host save/reload');
