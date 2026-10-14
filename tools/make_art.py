@@ -17,6 +17,8 @@ PEOPLE={
 'celina':dict(skin='#74442e',light='#ad7048',hair='#33231d',hairlight='#654631',cloth='#356f69',shade='#234e4a',pants='#76593e',style='vest',head='braids'),
 'augusto':dict(skin='#b87548',light='#d59a69',hair='#76695f',hairlight='#b7a996',cloth='#a94f3c',shade='#71372c',pants='#504c49',style='work',head='beard'),
 'iara':dict(skin='#b87548',light='#e9b88b',hair='#49301f',hairlight='#80553a',cloth='#c79b48',shade='#977330',pants='#687044',style='apron',head='braid')}
+PEOPLE['player_light']={**PEOPLE['player'],'skin':'#efc398','light':'#ffe0b8','cloth':'#d8e8ca','shade':'#a7c19f'}
+PEOPLE['player_dark']={**PEOPLE['player'],'skin':'#875338','light':'#ba8057','cloth':'#bdd9dc','shade':'#7faab0'}
 DIRS=['down','up','left','right'];STATES={'idle':2,'walk':6,'talk':2,'run':6,'hoe':6,'water':6,'axe':6,'fish':6,'plant':6,'harvest':6,'pet':4,'note':4,'wave':4,'feed':6,'sit':2}
 
 def human(who,direction,state,frame):

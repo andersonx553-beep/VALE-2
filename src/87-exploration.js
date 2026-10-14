@@ -1,0 +1,10 @@
+// Clareira e pedreira opcionais compartilham o mapa/portal existente, sem alterar campanhas.
+REGIONS.clareira={name:'Clareira das Flores',w:40,h:30,buildings:[]};
+REGIONS.pedreira={name:'Pedreira Antiga',w:40,h:30,buildings:[]};
+PUBLIC_POINTS.bosque.push({id:'portal_clareira',type:'portal',x:5,y:10,label:'Clareira das Flores',to:'clareira',spawn:[20,26]});
+PUBLIC_POINTS.clareira=[{id:'retorno_bosque',type:'portal',x:20,y:28,label:'Bosque da Sombra',to:'bosque',spawn:[6,10]},{id:'ervas_clareira',type:'forage',x:12,y:12,label:'Ervas silvestres',item:'erva',amount:2},{id:'flores_clareira',type:'forage',x:29,y:18,label:'Sementes nativas',item:'muda_flor',amount:1}];
+PUBLIC_POINTS.alto.push({id:'portal_pedreira',type:'portal',x:34,y:26,label:'Pedreira Antiga',to:'pedreira',spawn:[20,26]});
+PUBLIC_POINTS.pedreira=[{id:'retorno_alto',type:'portal',x:20,y:28,label:'Alto das Nascentes',to:'alto',spawn:[34,25]},{id:'pedras_pedreira',type:'forage',x:12,y:10,label:'Pedras soltas',item:'pedra',amount:3},{id:'galhos_pedreira',type:'forage',x:29,y:20,label:'Galhos secos',item:'madeira',amount:2}];
+for(const id of ['clareira','pedreira'])createRegion(id);
+const explorationPoints=addRegionPoints;addRegionPoints=function(list){explorationPoints(list);if(world.region==='clareira'){for(const[x,y]of [[5,4],[8,7],[33,5],[31,14],[7,21],[35,23],[14,19],[24,6]])list.push([y*T+16,()=>worldSprite('tree',x*T+8,y*T+16,season())]);for(const[x,y]of [[12,9],[15,13],[26,17],[30,9],[9,24]])list.push([y*T+16,()=>worldSprite('native_flower',x*T+8,y*T+16)])}if(world.region==='pedreira'){for(const[x,y]of [[5,5],[7,16],[29,6],[34,15],[12,23],[25,20]])list.push([y*T+16,()=>worldSprite('rock',x*T+8,y*T+16)]);for(const[x,y]of [[8,8],[32,22]])list.push([y*T+16,()=>worldSprite('tree',x*T+8,y*T+16,season())])}};
+const explorationDiary=openStoryDiary;openStoryDiary=function(tab='today'){explorationDiary(tab);if(tab==='collections'){const b=document.createElement('p');b.textContent='Exploração livre: '+['clareira','pedreira'].map(id=>REGIONS[id].name+' '+(world.visited.includes(id)?'✓':'·')).join(' · ');$('shop').insertBefore(b,$('shop').querySelector('.x'))}};
