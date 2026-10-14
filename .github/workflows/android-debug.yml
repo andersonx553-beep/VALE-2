@@ -72,6 +72,12 @@ jobs:
         run: |
           if ! ./gradlew assembleDebug --no-daemon > /tmp/vale-gradle.log 2>&1; then
             cat /tmp/vale-gradle.log
+            (grep -E '(^| )error:|FAILURE:|What went wrong|Could not |Execution failed|Failed to |A problem occurred' /tmp/vale-gradle.log || true) | tail -n 12 | while IFS= read -r line; do
+              echo "::error title=Android Gradle::$line"
+            done
+            tail -n 12 /tmp/vale-gradle.log | while IFS= read -r line; do
+              echo "::warning title=Gradle tail::$line"
+            done
             {
               echo '### Android Gradle failure'
               echo '```'
