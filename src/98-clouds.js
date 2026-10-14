@@ -1,0 +1,2 @@
+// Nuvens em paralaxe discreto sobre a vista superior; não cobre HUD ou mapas.
+const cloudBaseDraw=draw;draw=function(){cloudBaseDraw();if(inside||rain||snow||dark()>.3)return;const w=VW,hg=VH;ctx.save();ctx.setTransform(1,0,0,1,0,0);ctx.globalAlpha=.055;ctx.fillStyle='#31464a';for(let i=0;i<3;i++){const x=((i*157+time*(4+i)-cam.x*.15)%(w+160)+w+160)%(w+160)-80,y=((i*89+cam.y*.07)%(hg+40)+hg+40)%(hg+40)-20;ctx.fillRect(Math.round(x),Math.round(y),72,7);ctx.fillRect(Math.round(x+11),Math.round(y-5),50,7);ctx.fillRect(Math.round(x+24),Math.round(y+6),38,5)}ctx.restore()};
