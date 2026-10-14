@@ -1,0 +1,65 @@
+name: Android debug APK
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - 'src/**'
+      - 'assets/**'
+      - 'android/**'
+      - 'tools/**'
+      - 'package*.json'
+      - 'capacitor.config.json'
+      - '.github/workflows/android-debug.yml'
+  push:
+    branches:
+      - feat/canonical-html-controls-lan-android
+      - main
+permissions:
+  contents: read
+jobs:
+  web-regression:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+      - run: npm ci
+      - run: npx playwright install --with-deps chromium
+      - run: npm run build:web
+      - name: Validate generated HTML
+        run: git diff --exit-code -- index.html
+      - name: Start local game server
+        run: python3 -m http.server 8000 --bind 127.0.0.1 >/tmp/vale-http.log 2>&1 &
+      - name: Browser and LAN regressions
+        run: |
+          for test in m0 m1 m2 m3 m4 m5 m6 m7 m8 campaign economy gaps lan performance; do
+            node tests/$test.cjs
+          done
+  android-apk:
+    needs: web-regression
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+      - uses: android-actions/setup-android@v3
+      - run: npm ci
+      - run: npm run android:sync
+      - name: Assemble installable debug APK
+        working-directory: android
+        run: ./gradlew assembleDebug --no-daemon
+      - name: Upload VALE-2 debug APK
+        uses: actions/upload-artifact@v4
+        with:
+          name: VALE-2-Android-debug-APK
+          path: android/app/build/outputs/apk/debug/app-debug.apk
+          if-no-files-found: error
+          retention-days: 14

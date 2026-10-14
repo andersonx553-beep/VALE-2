@@ -98,3 +98,14 @@ Verificação: `node tests/m6.cjs` passou com 4.289 frames válidos, 42,52 MiB e
 - Preferências de controle usam `vale-a-dois-controls-v1` no `localStorage`, separadas do save da fazenda.
 - Adicionado `tests/m8.cjs` para regressão de remapeamento, velocidade diagonal, joystick, multitouch, corrida, reset após perda de foco e formato do pacote de input.
 - Limitação desta execução: o código e o teste tiveram sintaxe validada, mas não houve teste em aparelho Android físico. O teste Playwright deve ser executado no ambiente do projeto com Chromium/Playwright disponíveis.
+
+
+## M9 em andamento — HTML canônico, lacunas, LAN e Android
+
+- O HTML anexado tem o jogo M7 como prefixo idêntico e mais 52 linhas de apresentação. A `main` também já continha M8. A camada nova está em `src/95-canonical-visual.js` e o build a incorpora depois de M8, preservando a versão oficial mais recente. Em tela horizontal compacta, pós-processamento de tela inteira é reduzido para manter o controle responsivo; casas, fonte, sprites, partículas sazonais e mapas continuam renderizados.
+- Gaps já existentes: retratos de cenas, ícones, festivais F01–F04, pós-jogo P01–P04, dez espécies, crescimento, qualidade animal, queijeira/tear/apiário, upgrades básicos. Novo módulo `src/85-gap-features.js`: calendário/aniversários, presentes com reação, avatar visível em três aparências, qualidade prata/ouro de colheita, ferramentas níveis 0–2, sorte diária, relíquias/arquivo, eventos de surpresa, feno e segunda reforma da casa/abrigo com prazo.
+- Coop LAN em `src/92-lan.js`: dois jogadores, host único de save, inventários separados e dinheiro conjunto; WebSocket local, entrada por IP, descoberta Android por NSD, heartbeat e reconexão. Dev relay permite testes de duas instâncias no navegador. O plugin nativo Android hospeda o WebSocket sem serviço externo.
+- Projeto Capacitor Android criado com package `com.valeadois.app`, orientação horizontal, fullscreen, ícone autoral da dupla e workflow para APK debug. Teste físico em dois aparelhos ainda necessário.
+
+- Duas áreas opcionais de exploração foram adicionadas: Clareira das Flores e Pedreira Antiga. Auditoria detalhada: `AUDITORIA_GAPS.md`.
+- Regressões locais M0–M8, campaign, economy, gaps e LAN passaram. Chromium headless com 24 animais mediu ~60 FPS desktop e retrato, ~59 FPS horizontal com CPU ×4 antes dos últimos efeitos leves; não substitui aparelho físico.

@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Vale a Dois</string>
+    <string name="title_activity_main">Vale a Dois</string>
+    <string name="package_name">com.valeadois.app</string>
+    <string name="custom_url_scheme">com.valeadois.app</string>
+</resources>

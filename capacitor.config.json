@@ -1,0 +1,12 @@
+{
+  "appId": "com.valeadois.app",
+  "appName": "Vale a Dois",
+  "webDir": "www",
+  "server": {
+    "androidScheme": "http",
+    "cleartext": true
+  },
+  "android": {
+    "allowMixedContent": true
+  }
+}
