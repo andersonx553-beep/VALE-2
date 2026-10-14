@@ -60,12 +60,27 @@ jobs:
         with:
           distribution: temurin
           java-version: '21'
-      - uses: android-actions/setup-android@v3
+      - name: Check Android SDK on runner
+        run: |
+          test -d "$ANDROID_HOME"
+          ls "$ANDROID_HOME"
+          command -v sdkmanager || true
       - run: npm ci
       - run: npm run android:sync
       - name: Assemble installable debug APK
         working-directory: android
-        run: ./gradlew assembleDebug --no-daemon
+        run: |
+          if ! ./gradlew assembleDebug --no-daemon > /tmp/vale-gradle.log 2>&1; then
+            cat /tmp/vale-gradle.log
+            {
+              echo '### Android Gradle failure'
+              echo '```'
+              tail -n 80 /tmp/vale-gradle.log
+              echo '```'
+            } >> "$GITHUB_STEP_SUMMARY"
+            exit 1
+          fi
+          tail -n 35 /tmp/vale-gradle.log
       - name: Upload VALE-2 debug APK
         uses: actions/upload-artifact@v4
         with:
